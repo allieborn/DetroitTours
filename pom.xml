@@ -46,7 +46,7 @@
             <version>5.1.6</version>
         </dependency>
 
-        //The 3 below are hibernate dependencies
+        <!--Hibernate-->
         <dependency>
             <groupId>javassist</groupId>
             <artifactId>javassist</artifactId>
@@ -63,11 +63,18 @@
             <version>5.2.4.Final</version>
         </dependency>
 
-        //google map
+        <!--google map-->
         <dependency>
             <groupId>com.google.maps</groupId>
             <artifactId>google-maps-services</artifactId>
             <version>0.1.20</version>
+        </dependency>
+
+        <!--Uber-->
+        <dependency>
+            <groupId>com.uber.sdk</groupId>
+            <artifactId>rides</artifactId>
+            <version>0.5.2</version>
         </dependency>
 
     </dependencies>
