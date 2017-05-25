@@ -54,7 +54,7 @@
         <tr>
             <td class="label">State</td>
             <td class="slimField">
-                <input class="field" id="administrative_area_level_1" disabled="true"/>
+                <input class="field" id="administrative_area_level_1" name = "nope" disabled="true"/>
             </td>
             <td class="label">Zip code</td>
             <td class="wideField">
@@ -97,7 +97,7 @@
             <tr>
                 <td class="label">State</td>
                 <td class="slimField">
-                    <input class="field" id="administrative_area_level_11" disabled="true"/></td>
+                    <input class="field" id="administrative_area_level_11" name="yep"disabled="true"/></td>
                 <td class="label">Zip code</td>
                 <td class="wideField"><input class="field" id="postal_code1" name="posta" disabled="true"/>
                 </td>

@@ -35,15 +35,17 @@ public class HomeController {
     public ModelAndView route(@RequestParam("streetNum") String street,
                               @RequestParam("routee")String routeM,
                               @RequestParam("local")String loc,
+                              @RequestParam("nope")String state,
                               @RequestParam("postal")String post,
                               @RequestParam("count")String count,
                               @RequestParam("strtN") String strt,
                               @RequestParam("rou")String rout,
                               @RequestParam("loca")String local,
+                              @RequestParam("yep") String state1,
                               @RequestParam("posta")String postal,
                               @RequestParam("userCountry")String userCount){
-        String user= street + " " + routeM + " " + loc + " " + post + " "+count;
-        String info= strt + " " + rout + " " + local + " " + postal + " " + userCount;
+        String user= street + " " + routeM + " " + loc + " " + state+ " " + post + " "+count;
+        String info= strt + " " + rout + " " + local + " " + state1 + " " + postal + " " + userCount;
 
         return new ModelAndView("result","addStuff",user + " " + info);
 
