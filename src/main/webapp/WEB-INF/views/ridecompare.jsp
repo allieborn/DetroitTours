@@ -21,8 +21,8 @@
     </div>
     <div class="card-block">
         <blockquote class="card-blockquote">
-            <p><h6>Pick Up: </h6> 123 Sesame St, Detroit, MI 12345</p>
-            <p><h6>Drop Off: </h6> 987 Bikini Bottom, Detroit, MI 12345</p>
+            <p><h6>Pick Up: </h6> ${fromAdd} </p>
+            <p><h6>Drop Off: </h6> ${toAdd} </p>
         </blockquote>
     </div>
 </div>
@@ -43,8 +43,10 @@
             <div class="card">
                 <div class="card-block">
                     <h3 class="card-title">LYFT</h3>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="https://lyft.com/i/LYFTFARERG" class="btn btn-primary" target="_blank">Call Lyft</a>
+                    <p class="card-text">LYFT Standard <br> No. of Riders: 4 </p>
+                    <h4 class="card-title">${displayPriceMin} - ${displayPriceMax}</h4>
+                    <h4 class="card-title">ETA (min): ${driverETA}</h4>
+                    <a href="#" class="btn btn-primary">Call Lyft</a>
                 </div>
             </div>
         </div>
