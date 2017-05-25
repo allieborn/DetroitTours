@@ -73,8 +73,8 @@ public class HomeController {
 
         try {
             SessionConfiguration config = new SessionConfiguration.Builder()
-                    .setClientId("8RzoguxuX2ewBwxPa-lWFTbBUpOdsskI")
-                    .setServerToken("lmsYmf0NANVZcPTESB5mKYJsAy4nhdYgjgn7rtq1")
+                    .setClientId("clientId")
+                    .setServerToken("serverToken")
                     .build();
 
             ServerTokenSession session = new ServerTokenSession(config);
