@@ -8,6 +8,8 @@ import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
@@ -24,10 +26,28 @@ import retrofit2.Response;
 
 @Controller
 public class HomeController {
-    @RequestMapping("/")
-    public ModelAndView helloWorld() {
-        return new
-                ModelAndView ( "welcome", "message", "Hello World" );
+
+    @RequestMapping ("/")
+    public String displayForm() {
+        return "userWelcome";
+    }
+    @RequestMapping(value="/result", method= RequestMethod.POST)
+    public ModelAndView route(@RequestParam("streetNum") String street,
+                              @RequestParam("routee")String routeM,
+                              @RequestParam("local")String loc,
+                              @RequestParam("postal")String post,
+                              @RequestParam("count")String count,
+                              @RequestParam("strtN") String strt,
+                              @RequestParam("rou")String rout,
+                              @RequestParam("loca")String local,
+                              @RequestParam("posta")String postal,
+                              @RequestParam("userCountry")String userCount){
+        String user= street + " " + routeM + " " + loc + " " + post + " "+count;
+        String info= strt + " " + rout + " " + local + " " + postal + " " + userCount;
+
+        return new ModelAndView("result","addStuff",user + " " + info);
+
+
     }
 
     @RequestMapping("listUsers")
@@ -53,8 +73,8 @@ public class HomeController {
 
         try {
             SessionConfiguration config = new SessionConfiguration.Builder()
-                    .setClientId("clientId")
-                    .setServerToken("serverToken")
+                    .setClientId("8RzoguxuX2ewBwxPa-lWFTbBUpOdsskI")
+                    .setServerToken("lmsYmf0NANVZcPTESB5mKYJsAy4nhdYgjgn7rtq1")
                     .build();
 
             ServerTokenSession session = new ServerTokenSession(config);
