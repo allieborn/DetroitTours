@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import com.uber.sdk.rides.client.ServerTokenSession;
 import com.uber.sdk.rides.client.SessionConfiguration;
 import com.uber.sdk.rides.client.UberRidesApi;
@@ -97,9 +98,9 @@ public class HomeController {
             //Lyft AppConfig
             ApiConfig apiConfig = new ApiConfig.Builder()
                     .setClientId("mZOUI6oBEYPd")
-                    .setClientToken("gAAAAABZH1Z6trZYDn3zSUpGIU6ctNuIDDzaXo0kUJW7Q4jdcCIv2eycPxtRZmic_br1YZfeQWkqurVcEW2t5uL3IVdO1XH9huKDW4tG0-Ya5xyUv_-95eQmHlRGgB8kFSrNxoCa-OQdvSP_ApTngzBZr5yDDkhKx_KIxXRS6E_U46tgc1z9fcM=")
-                    .build();
-
+                    .setClientToken
+                            ("gAAAAABZH1Z6trZYDn3zSUpGIU6ctNuIDDzaXo0kUJW7Q4jdcCIv2eycPxtRZmic_br1YZfeQWkqurVcEW2t5uL3IVdO1XH9huKDW4tG0-Ya5xyUv_-95eQmHlRGgB8kFSrNxoCa-OQdvSP_ApTngzBZr5yDDkhKx_KIxXRS6E_U46tgc1z9fcM=")
+                    .build ();
             //Uber ProductType
             Response <ProductsResponse> response = service.getProducts ( googleLat, googleLong ).execute ();
             ProductsResponse products = response.body ();
@@ -193,7 +194,7 @@ public class HomeController {
             String discript = results.get ( 0 ).getDescription ();
             int cap = results.get ( 0 ).getCapacity ();
 
-            String priceEst = prices.get ( 0 ).getEstimate () + " " + prices.get ( 0 ).getCurrencyCode ();
+            String priceEst = prices.get ( 0 ).getEstimate ();
             Float distance = prices.get ( 0 ).getDistance ();
 
             int seconds = duration.get ( 0 ).getEstimate ();
