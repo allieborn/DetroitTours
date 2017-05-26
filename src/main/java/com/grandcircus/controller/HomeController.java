@@ -1,9 +1,11 @@
 package com.grandcircus.controller;
 
+import com.grandcircus.models.SelectionEntity;
 import com.grandcircus.models.UsersEntity;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,6 +53,28 @@ public class HomeController {
         return new ModelAndView ( "welcome2", "cList", usersArrayList );
     }
 
+
+    @RequestMapping(value = "/finishSelection", method=RequestMethod.POST)
+    public String finishSelection (@RequestParam("price") String price, @RequestParam("time") int time){
+
+        //ADDED TO TEST DATABASE
+        Configuration cfg2 = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact2 = cfg2.buildSessionFactory();
+        Session session3 = sessionFact2.openSession();
+        Transaction tx = session3.beginTransaction();
+        SelectionEntity newSelection = new SelectionEntity();
+        newSelection.setPrice(price);
+        newSelection.setTimeDistance(time);
+        session3.save(newSelection);
+        tx.commit();
+        session3.close();
+        //ADDED TO TEST DATABASE
+
+    return "finishSelection";
+    }
+
+
+
     @RequestMapping(value = "/ridecompare", method = RequestMethod.POST)
     public String ridecompare(Model model, @RequestParam("streetNum") String street,
                               @RequestParam("routee")String routeM,
@@ -74,6 +98,20 @@ public class HomeController {
         List <PriceEstimate> prices;
         List <TimeEstimate> duration;
         String id = "";
+
+        //ADDED TO TEST DATABASE
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session session2 = sessionFact.openSession();
+        Transaction tx = session2.beginTransaction();
+        SelectionEntity newSelection = new SelectionEntity();
+        newSelection.setFromAddress(fromAdd); 
+        newSelection.setToAddress(toAdd);
+        session2.save(newSelection);
+        tx.commit();
+        session2.close();
+        //ADDED TO TEST DATABASE
+
 
         try {
 

@@ -33,9 +33,9 @@
                 <div class="card-block">
                     <h3 class="card-title">UBER</h3>
                     <p class="card-text"> ${product} <br> No. of Riders: ${cap}</p>
-                    <h5 class="card-title">${price}</h5>
-                    <h5 class="card-title">Driver is ${time} minutes away</h5>
-                    <a href="https://m.uber.com/ul/?action=setPickup" class="btn btn-primary" target="_blank">Call Uber</a>
+                    <h5 class="card-title" name="price">${price}</h5>
+                    <h5 class="card-title" name="time">Driver is ${time} minutes away</h5>
+                    <a href="https://m.uber.com/ul/?action=setPickup"  action="finishSelection" class="btn btn-primary" target="_blank">Call Uber</a>
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
                     <p class="card-text">LYFT Standard <br> No. of Riders: 4 </p>
                     <h5 class="card-title">${displayPriceMin} - ${displayPriceMax}</h5>
                     <h5 class="card-title">Driver is ${driverETA} minutes away</h5>
-                    <a href="https://lyft.com" class="btn btn-primary" target="_blank">Call Lyft</a>
+                    <a href="https://lyft.com" class="btn btn-primary" target="_blank" >Call Lyft</a>
                 </div>
             </div>
         </div>
