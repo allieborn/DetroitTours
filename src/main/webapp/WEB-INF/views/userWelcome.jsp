@@ -102,7 +102,7 @@
         // location types.
         autocomplete = new google.maps.places.Autocomplete(
             /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-            {types: ['geocode']});
+            {types: ['geocode']['establishment']});
 
         // When the user selects an address from the dropdown, populate the address
         // fields in the form.
@@ -110,7 +110,7 @@
 
         autocomplete2 = new google.maps.places.Autocomplete(
             /** @type {!HTMLInputElement} */(document.getElementById('autocomplete1')),
-            {types: ['geocode']});
+            {types: ['geocode']['establishment']});
 
         // When the user selects an address from the dropdown, populate the address
         // fields in the form.
