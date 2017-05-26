@@ -30,7 +30,7 @@
                onFocus="geolocate()" type="text" size="45"/>
     </div>
 </div>
-<form name="testForm" method="post" action="/result">
+<form name="testForm" method="post" action="/ridecompare">
     <table id="address">
         <tr>
             <td class="label">Street address</td>
@@ -73,7 +73,7 @@
     <div id="locationField2">
         <input id="autocomplete1" placeholder="Enter your address" onFocus="geolocate()" type="text" size="45"/>
     </div>
-    <form name="destForm" method="post" action="/result">
+    <form name="destForm" method="post" action="/ridecompare">
         <table id="address1">
             <tr>
                 <td class="label">Street address</td>
