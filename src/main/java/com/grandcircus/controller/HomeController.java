@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,15 +32,29 @@ import com.lyft.networking.apis.LyftPublicApi;
 import retrofit2.Call;
 import retrofit2.Response;
 
-
 @Controller
 public class HomeController {
+    @Value("${GoogleAPI.key}")
+    private String GoogleAPIKey;
+    @Value("${UberClientId.key}")
+    private String UberClientIdKey;
+    @Value("${UberServerToken.key}")
+    private String UberServerTokenKey;
+    @Value("${LyftClientId.key}")
+    private String LyftClientIdKey;
+    @Value("${LyftClientToken.key}")
+    private String LyftClientTokenKey;
+
+    //@RequestMapping ("/")
+    //public String displayForm() {
+    //    return "userWelcome";}
 
     @RequestMapping ("/")
-    public String displayForm() {
+    public String displayForm(Model model) {
+        model.addAttribute ( "GAPIKey", GoogleAPIKey);
+        model.addAttribute ( "temp", "test");
         return "userWelcome";
     }
-
 
     @RequestMapping("listUsers")
     public ModelAndView listUsers() {
@@ -125,8 +140,8 @@ public class HomeController {
 
             //Uber AppConfig
             SessionConfiguration config = new SessionConfiguration.Builder ()
-                    .setClientId ( "8RzoguxuX2ewBwxPa-lWFTbBUpOdsskI" )
-                    .setServerToken ( "lmsYmf0NANVZcPTESB5mKYJsAy4nhdYgjgn7rtq1" )
+                    .setClientId (UberClientIdKey)
+                    .setServerToken (UberServerTokenKey)
                     .build ();
             ServerTokenSession session = new ServerTokenSession ( config );
 
@@ -135,9 +150,8 @@ public class HomeController {
 
             //Lyft AppConfig
             ApiConfig apiConfig = new ApiConfig.Builder()
-                    .setClientId("mZOUI6oBEYPd")
-                    .setClientToken
-                            ("gAAAAABZH1Z6trZYDn3zSUpGIU6ctNuIDDzaXo0kUJW7Q4jdcCIv2eycPxtRZmic_br1YZfeQWkqurVcEW2t5uL3IVdO1XH9huKDW4tG0-Ya5xyUv_-95eQmHlRGgB8kFSrNxoCa-OQdvSP_ApTngzBZr5yDDkhKx_KIxXRS6E_U46tgc1z9fcM=")
+                    .setClientId(LyftClientIdKey)
+                    .setClientToken(LyftClientTokenKey)
                     .build ();
             //Uber ProductType
             Response <ProductsResponse> response = service.getProducts ( googleLat, googleLong ).execute ();
@@ -250,12 +264,6 @@ public class HomeController {
             //} catch (JSONException e) {
             //    e.printStackTrace();
         }
-
-
-
-
-
         return "ridecompare";
     }
-
 }
