@@ -30,7 +30,7 @@
     </div>
 </div>
 
-<form name="form" method="post" action="/ridecompare">
+<form name="form" method="post" action="/ridecompare" onsubmit="return validateForm()">
 
                 <input type="hidden" class="field" id="street_number" name="streetNum" disabled="true"/>
 
@@ -98,8 +98,7 @@
     };
 
     function initAutocomplete() {
-        // Create the autocomplete object, restricting the search to geographical
-        // location types.
+        // Create the autocomplete object
         autocomplete = new google.maps.places.Autocomplete(
             /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
             {types: ['geocode']['establishment']});
@@ -177,6 +176,56 @@
             });
         }
     }
+
+
+    function validateForm() {
+        var fromStreetNum = document.forms["form"]["streetNum"].value;
+        var toStreetNum = document.forms["form"]["strtN"].value;
+        var fromStreetName = document.forms["form"]["routee"].value;
+        var toStreetName = document.forms["form"]["rou"].value;
+        var fromCity = document.forms["form"]["local"].value;
+        var toCity = document.forms["form"]["loca"].value;
+        var fromState = document.forms["form"]["administrative_area_level_1"].value;
+        var toState = document.forms["form"]["administrative_area_level_11"].value;
+
+        if (autocomplete != ({types:['establishment']}) || (autocomplete2 != ({types:['establishment']}))){
+
+            if (fromStreetNum == "") {
+                alert("Looks like you didn't enter a street number....");
+                return false;
+            }
+            if (toStreetNum == "") {
+                alert("Looks like you didn't enter a street number....");
+                return false;
+            }
+            if (fromStreetName == "") {
+                alert("Looks like you didn't tell us which street your located at...");
+                return false;
+            }
+            if (toStreetName == "") {
+                alert("Looks like you didn't tell us what street you were going to...");
+                return false;
+            }
+            if (fromCity == "") {
+                alert("Looks like you didn't tell us what city you were in....");
+                return false;
+            }
+            if (toCity == "") {
+                alert("Looks like you didn't tell us what city you're going to....");
+                return false;
+            }
+            if (fromState == "") {
+                alert("What state are you in? Please tell us!");
+                return false;
+            }
+            if (toState == "") {
+                alert("Which state are you trying to go to?");
+                return false;
+            }
+        }return true;
+    }
+
+
 
 </script>
 <br>
