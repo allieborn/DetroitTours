@@ -203,35 +203,35 @@
         if (autocomplete != ({types:['establishment']}) || (autocomplete2 != ({types:['establishment']}))){
 
             if (fromStreetNum == "") {
-                alert("Looks like you didn't enter a street number....");
+                alert("Looks like you didn't enter a complete address...");
                 return false;
             }
             if (toStreetNum == "") {
-                alert("Looks like you didn't enter a street number....");
+                alert("Looks like you didn't enter a complete address...");
                 return false;
             }
             if (fromStreetName == "") {
-                alert("Looks like you didn't tell us which street your located at...");
+                alert("Looks like you didn't enter a complete address...");
                 return false;
             }
             if (toStreetName == "") {
-                alert("Looks like you didn't tell us what street you were going to...");
+                alert("Looks like you didn't enter a complete address...");
                 return false;
             }
             if (fromCity == "") {
-                alert("Looks like you didn't tell us what city you were in....");
+                alert("Looks like you didn't enter a complete address...");
                 return false;
             }
             if (toCity == "") {
-                alert("Looks like you didn't tell us what city you're going to....");
+                alert("Looks like you didn't enter a complete address...");
                 return false;
             }
             if (fromState == "") {
-                alert("What state are you in? Please tell us!");
+                alert("Looks like you didn't enter a complete address...");
                 return false;
             }
             if (toState == "") {
-                alert("Which state are you trying to go to?");
+                alert("Looks like you didn't enter a complete address...");
                 return false;
             }
         }return true;
