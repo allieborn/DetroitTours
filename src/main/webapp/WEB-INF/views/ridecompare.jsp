@@ -43,10 +43,10 @@
             <div class="card">
                 <div class="card-block">
                     <h3 class="card-title">LYFT</h3>
-                    <p class="card-text">LYFT Standard <br> No. of Riders: 4 </p>
-                    <h5 class="card-title">${displayPriceMin} - ${displayPriceMax}</h5>
+                    <p class="card-text">${typeOfLyft} <br> No. of Riders: ${capacity} </p>
+                    <h5 class="card-title">${displayPriceMin}-${displayPriceMax}</h5>
                     <h5 class="card-title">Driver is ${driverETA} minutes away</h5>
-                    <a href="https://lyft.com" class="btn btn-primary" target="_blank" >Call Lyft</a>
+                    <a href="https://lyft.com/i" class="btn btn-primary" target="_blank" >Call Lyft</a>
                 </div>
             </div>
         </div>

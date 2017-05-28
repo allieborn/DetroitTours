@@ -23,53 +23,65 @@
 
 <body>
 
-<h1>Please Enter Current Location</h1><br>
-<div class="container">
-    <div id="locationField1">
-        <input id="autocomplete" name="pickup" placeholder="Enter your address" onFocus="geolocate()" type="text" size="45"/>
-    </div>
-</div>
-
 <form name="form" method="post" action="/ridecompare" onsubmit="return validateForm()">
 
-                <input type="hidden" class="field" id="street_number" name="streetNum" disabled="true"/>
-
-                <input type="hidden" class="field" id="route" name="routee" disabled="true"/>
-
-                <input type="hidden" class="field" id="locality" name="local" disabled="true"/>
-
-                <input type="hidden" class="field" id="administrative_area_level_1" name="nope" disabled="true"/>
-
-                <input type="hidden" class="field" id="postal_code" name="postal" disabled="true"/>
-
-                <input type="hidden" class="field" name="count" id="country" disabled="true"/>
-
-
-
-<h1>Please Enter Destination</h1><br>
-<div class="container">
-    <div id="locationField2">
-        <input id="autocomplete1" placeholder="Enter your address" onFocus="geolocate()" type="text" size="45"/>
+<h1>Please Enter Current Location</h1><br>
+    <div class="container">
+        <div id="locationField1">
+            <input id="autocomplete" name="pickup" placeholder="Enter your address" onFocus="geolocate()" type="text"
+                   size="45"/>
+        </div>
     </div>
-</div>
 
 
-        <input type="hidden" class="field" id="street_number1" name="strtN" disabled="true"/>
-
-        <input type="hidden" class="field" id="route1" name="rou" disabled="true"/>
-
-        <input type="hidden" class="field" id="locality1" name="loca" disabled="true"/>
-
-        <input type="hidden" class="field" id="administrative_area_level_11" name="yep" disabled="true"/></td>
-
-        <input type="hidden" class="field" id="postal_code1" name="posta" disabled="true"/>
-
-        <input type="hidden" class="field" name="userCountry" id="country1" disabled="true"/>
 
 
-        <input type="submit" value="Submit" align="center"/>
 
-    </form>
+
+    <input type="hidden" class="field" id="street_number" name="streetNum" disabled="true"/>
+
+    <input type="hidden" class="field" id="route" name="routee" disabled="true"/>
+
+    <input type="hidden" class="field" id="locality" name="local" disabled="true"/>
+
+    <input type="hidden" class="field" id="administrative_area_level_1" name="nope" disabled="true"/>
+
+    <input type="hidden" class="field" id="postal_code" name="postal" disabled="true"/>
+
+    <input type="hidden" class="field" name="count" id="country" disabled="true"/>
+
+
+    <h1>Please Enter Destination</h1><br>
+    <div class="container">
+        <div id="locationField2">
+            <input id="autocomplete1" placeholder="Enter your address" onFocus="geolocate()" type="text" size="45"/>
+        </div>
+    </div>
+
+
+    <input type="hidden" class="field" id="street_number1" name="strtN" disabled="true"/>
+
+    <input type="hidden" class="field" id="route1" name="rou" disabled="true"/>
+
+    <input type="hidden" class="field" id="locality1" name="loca" disabled="true"/>
+
+    <input type="hidden" class="field" id="administrative_area_level_11" name="yep" disabled="true"/></td>
+
+    <input type="hidden" class="field" id="postal_code1" name="posta" disabled="true"/>
+
+    <input type="hidden" class="field" name="userCountry" id="country1" disabled="true"/>
+
+    <fieldset>
+        <legend>Filters</legend>
+        <h4>Number of Riders</h4>
+        <input type="radio" name="capSeat" value="1">4 Riders<br>
+        <input type="radio" name="capSeat" value="2">6 Riders<br>
+        <input type="radio" name="capSeat" value="3">All Types<br>
+     </fieldset>
+
+    <input type="submit" value="Submit" align="center"/>
+
+</form>
 
     <script>
     // This example displays an address form, using the autocomplete feature
