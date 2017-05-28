@@ -34,10 +34,6 @@
     </div>
 
 
-
-
-
-
     <input type="hidden" class="field" id="street_number" name="streetNum" disabled="true"/>
 
     <input type="hidden" class="field" id="route" name="routee" disabled="true"/>
@@ -77,7 +73,7 @@
         <input type="radio" name="capSeat" value="1">4 Riders<br>
         <input type="radio" name="capSeat" value="2">6 Riders<br>
         <input type="radio" name="capSeat" value="3">All Types<br>
-     </fieldset>
+    </fieldset>
 
     <input type="submit" value="Submit" align="center"/>
 

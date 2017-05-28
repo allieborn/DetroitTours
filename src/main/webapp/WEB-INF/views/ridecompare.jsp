@@ -44,7 +44,11 @@
                 <div class="card-block">
                     <h3 class="card-title">LYFT</h3>
                     <p class="card-text">${typeOfLyft} <br> No. of Riders: ${capacity} </p>
+<<<<<<< Updated upstream
                     <h5 class="card-title">${displayPriceMin}-${displayPriceMax}</h5>
+=======
+                    <h5 class="card-title">${displayPriceMin} - ${displayPriceMax}</h5>
+>>>>>>> Stashed changes
                     <h5 class="card-title">Driver is ${driverETA} minutes away</h5>
                     <a href="https://lyft.com/i" class="btn btn-primary" target="_blank" >Call Lyft</a>
                 </div>

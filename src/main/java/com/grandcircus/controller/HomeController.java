@@ -263,7 +263,7 @@ public class HomeController {
                     List<Eta> lyftTime = body.eta_estimates;
 
                     for (Eta eta : body.eta_estimates) {
-                        lyftStandETA= (String.valueOf(eta.eta_seconds / 60));
+                        lyftStandETA = (String.valueOf(eta.eta_seconds / 60));
                     }
 
 
@@ -288,49 +288,47 @@ public class HomeController {
                     lyftName = "LYFT Plus";
                     numRides = 6;
 
+                    try {
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                try {
+                        LyftPublicApi lyftPublicApi2 = new LyftApiFactory(apiConfig).getLyftPublicApi();
+                        Call<EtaEstimateResponse> etaCall = lyftPublicApi2.getEtas(results12.latitude,
+                                results12.longitude, "lyft_plus");
 
-                    LyftPublicApi lyftPublicApi = new LyftApiFactory(apiConfig).getLyftPublicApi();
-                    Call<EtaEstimateResponse> etaCall = lyftPublicApi.getEtas(results12.latitude,
-                            results12.longitude, "lyft_plus");
-
-                    Response<EtaEstimateResponse> lyftDriverEta = etaCall.execute();
-                    EtaEstimateResponse body = lyftDriverEta.body();
-                    List<Eta> lyftTime = body.eta_estimates;
+                        Response<EtaEstimateResponse> lyftDriverEta = etaCall.execute();
+                        EtaEstimateResponse body2 = lyftDriverEta.body();
+                        List<Eta> lyftTime = body2.eta_estimates;
 
 
-                    for (Eta eta : body.eta_estimates) {
-                        lyftPlusETA = (String.valueOf(eta.eta_seconds / 60));
+                        for (Eta eta : body2.eta_estimates) {
+                            lyftPlusETA = (String.valueOf(eta.eta_seconds / 60));
+                        }
+
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
 
+                    model.addAttribute("displayStandard", name);
+                    model.addAttribute("riders", numRide);
+                    model.addAttribute("priceMinStand", displayPriceMinStand);
+                    model.addAttribute("priceMaxStand", displayPriceMaxStand);
+                    model.addAttribute("displayPlus", lyftName);
+                    model.addAttribute("rideCap", numRides);
+                    model.addAttribute("displayPriceMinPlus", displayPriceMinPlus);
+                    model.addAttribute("displayPriceMaxPlus", displayPriceMaxPlus);
+                    model.addAttribute("standardETA", lyftStandETA);
+                    model.addAttribute("plusETA", lyftPlusETA);
 
+                    return "allproducts";
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-                model.addAttribute("displayStandard", name);
-                model.addAttribute("riders", numRide);
-                model.addAttribute("priceMinStand", displayPriceMinStand);
-                model.addAttribute("priceMaxStand", displayPriceMaxStand);
-                model.addAttribute("displayPlus", lyftName);
-                model.addAttribute("rideCap", numRides);
-                model.addAttribute("displayPriceMinPlus", displayPriceMinPlus);
-                model.addAttribute("displayPriceMaxPlus", displayPriceMaxPlus);
-                model.addAttribute("standardETA", lyftStandETA);
-                model.addAttribute("plusETA", lyftPlusETA);
-
-                return "allproducts";
             }
 
             model.addAttribute("typeOfLyft", lyftType);
             model.addAttribute("capacity", numSeats);
             model.addAttribute("displayPriceMin", displayPriceMin);
             model.addAttribute("displayPriceMax", displayPriceMax);
-
 
 
 
@@ -369,6 +367,7 @@ public class HomeController {
 
             //Read Uber Data
             int numRider = Integer.parseInt(choice);
+
             String displayName = "";
             String priceEst = "";
             int cap = 0;
@@ -389,6 +388,7 @@ public class HomeController {
                     return "allproducts";
                 }
             }
+
 
 
             model.addAttribute ( "product", displayName );
