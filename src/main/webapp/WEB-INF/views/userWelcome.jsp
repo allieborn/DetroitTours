@@ -199,35 +199,35 @@
         if (autocomplete != ({types:['establishment']}) || (autocomplete2 != ({types:['establishment']}))){
 
             if (fromStreetNum == "") {
-                alert("Looks like you didn't enter a complete address...");
+                alert("Looks like you haven't entered a valid address...");
                 return false;
             }
             if (toStreetNum == "") {
-                alert("Looks like you didn't enter a complete address...");
+                alert("Looks like you haven't entered a valid address...");
                 return false;
             }
             if (fromStreetName == "") {
-                alert("Looks like you didn't enter a complete address...");
+                alert("Looks like you haven't entered a valid address...");
                 return false;
             }
             if (toStreetName == "") {
-                alert("Looks like you didn't enter a complete address...");
+                alert("Looks like you haven't entered a valid address...");
                 return false;
             }
             if (fromCity == "") {
-                alert("Looks like you didn't enter a complete address...");
+                alert("Looks like you haven't entered a valid address...");
                 return false;
             }
             if (toCity == "") {
-                alert("Looks like you didn't enter a complete address...");
+                alert("Looks like you haven't entered a valid address...");
                 return false;
             }
             if (fromState == "") {
-                alert("Looks like you didn't enter a complete address...");
+                alert("Looks like you haven't entered a valid address...");
                 return false;
             }
             if (toState == "") {
-                alert("Looks like you didn't enter a complete address...");
+                alert("Looks like you haven't entered a valid address...");
                 return false;
             }
         }return true;
