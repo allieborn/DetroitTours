@@ -3,20 +3,16 @@ package com.grandcircus.models;
 import javax.persistence.*;
 
 /**
- * Created by PAS8 on 5/23/2017.
+ * Created by aborn601722 on 5/30/17.
  */
 @Entity
 @Table(name = "Users", schema = "RideShare", catalog = "")
 public class UsersEntity {
     private int userId;
-    private String firstName;
-    private String lastName;
-    private String address;
-    private String city;
-    private String state;
-    private String postalCode;
-    private String country;
-    private String homePhone;
+    private String userName;
+    private String homeAddress;
+    private String email;
+    private String password;
 
     @Id
     @Column(name = "UserID", nullable = false)
@@ -29,101 +25,57 @@ public class UsersEntity {
     }
 
     @Basic
-    @Column(name = "FirstName", nullable = false, length = -1)
-    public String getFirstName() {
-        return firstName;
+    @Column(name = "UserName", nullable = true, length = 80)
+    public String getUserName() {
+        return userName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    @Basic
-    @Column(name = "LastName", nullable = false, length = -1)
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     @Basic
-    @Column(name = "Address", nullable = false, length = -1)
-    public String getAddress() {
-        return address;
+    @Column(name = "HomeAddress", nullable = true, length = 80)
+    public String getHomeAddress() {
+        return homeAddress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    @Basic
-    @Column(name = "City", nullable = false, length = -1)
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
+    public void setHomeAddress(String homeAddress) {
+        this.homeAddress = homeAddress;
     }
 
     @Basic
-    @Column(name = "State", nullable = false, length = -1)
-    public String getState() {
-        return state;
+    @Column(name = "email", nullable = true, length = 80)
+    public String getEmail() {
+        return email;
     }
 
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    @Basic
-    @Column(name = "PostalCode", nullable = false, length = -1)
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Basic
-    @Column(name = "Country", nullable = true, length = -1)
-    public String getCountry() {
-        return country;
+    @Column(name = "password", nullable = true, length = 80)
+    public String getPassword() {
+        return password;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    @Basic
-    @Column(name = "HomePhone", nullable = true, length = -1)
-    public String getHomePhone() {
-        return homePhone;
-    }
-
-    public void setHomePhone(String homePhone) {
-        this.homePhone = homePhone;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass () != o.getClass ()) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         UsersEntity that = (UsersEntity) o;
 
         if (userId != that.userId) return false;
-        if (firstName != null ? !firstName.equals ( that.firstName ) : that.firstName != null) return false;
-        if (lastName != null ? !lastName.equals ( that.lastName ) : that.lastName != null) return false;
-        if (address != null ? !address.equals ( that.address ) : that.address != null) return false;
-        if (city != null ? !city.equals ( that.city ) : that.city != null) return false;
-        if (state != null ? !state.equals ( that.state ) : that.state != null) return false;
-        if (postalCode != null ? !postalCode.equals ( that.postalCode ) : that.postalCode != null) return false;
-        if (country != null ? !country.equals ( that.country ) : that.country != null) return false;
-        if (homePhone != null ? !homePhone.equals ( that.homePhone ) : that.homePhone != null) return false;
+        if (userName != null ? !userName.equals(that.userName) : that.userName != null) return false;
+        if (homeAddress != null ? !homeAddress.equals(that.homeAddress) : that.homeAddress != null) return false;
+        if (email != null ? !email.equals(that.email) : that.email != null) return false;
+        if (password != null ? !password.equals(that.password) : that.password != null) return false;
 
         return true;
     }
@@ -131,14 +83,10 @@ public class UsersEntity {
     @Override
     public int hashCode() {
         int result = userId;
-        result = 31 * result + (firstName != null ? firstName.hashCode () : 0);
-        result = 31 * result + (lastName != null ? lastName.hashCode () : 0);
-        result = 31 * result + (address != null ? address.hashCode () : 0);
-        result = 31 * result + (city != null ? city.hashCode () : 0);
-        result = 31 * result + (state != null ? state.hashCode () : 0);
-        result = 31 * result + (postalCode != null ? postalCode.hashCode () : 0);
-        result = 31 * result + (country != null ? country.hashCode () : 0);
-        result = 31 * result + (homePhone != null ? homePhone.hashCode () : 0);
+        result = 31 * result + (userName != null ? userName.hashCode() : 0);
+        result = 31 * result + (homeAddress != null ? homeAddress.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
     }
 }

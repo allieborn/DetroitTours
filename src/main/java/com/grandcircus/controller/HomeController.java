@@ -2,7 +2,6 @@ package com.grandcircus.controller;
 
 import com.grandcircus.models.SelectionEntity;
 import com.grandcircus.models.UsersEntity;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -13,10 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -45,9 +42,6 @@ public class HomeController {
     @Value("${LyftClientToken.key}")
     private String LyftClientTokenKey;
 
-    //@RequestMapping ("/")
-    //public String displayForm() {
-    //    return "userWelcome";}
 
     @RequestMapping ("/")
     public String displayForm(Model model) {
@@ -56,36 +50,29 @@ public class HomeController {
         return "userWelcome";
     }
 
-    @RequestMapping("listUsers")
-    public ModelAndView listUsers() {
-        Configuration cfg = new Configuration ().configure ("src/main/resources/hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory ();
-        Session usersSession = sessionFact.openSession ();
-        usersSession.beginTransaction ();
 
-        Criteria c = usersSession.createCriteria(UsersEntity.class);
-        ArrayList<UsersEntity> usersArrayList = (ArrayList <UsersEntity>) c.list ();
-        return new ModelAndView ( "welcome2", "cList", usersArrayList );
-    }
-
-
-    @RequestMapping(value = "/finishSelection", method=RequestMethod.POST)
-    public String finishSelection (@RequestParam("price") String price, @RequestParam("time") int time){
-
-        //ADDED TO TEST DATABASE
+    @RequestMapping("/newUser")
+    public String newUser(Model model,
+                          @RequestParam("userName") String userName,
+                          @RequestParam("userID") int userID,
+                          @RequestParam("homeAddress") String homeAddress,
+                          @RequestParam("email") String email,
+                          @RequestParam("password") String password){
         Configuration cfg2 = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact2 = cfg2.buildSessionFactory();
         Session session3 = sessionFact2.openSession();
-        Transaction tx = session3.beginTransaction();
-        SelectionEntity newSelection = new SelectionEntity();
-        newSelection.setPrice(price);
-        newSelection.setTimeDistance(time);
-        session3.save(newSelection);
-        tx.commit();
+        Transaction tx2 = session3.beginTransaction();
+        UsersEntity newUser = new UsersEntity();
+        newUser.setUserName(userName);
+        newUser.setUserId(userID);
+        newUser.setHomeAddress(homeAddress);
+        newUser.setEmail(email);
+        newUser.setPassword(password);
+        session3.save(newUser);
+        tx2.commit();
         session3.close();
-        //ADDED TO TEST DATABASE
 
-    return "finishSelection";
+        return "newUser";
     }
 
 
@@ -103,7 +90,8 @@ public class HomeController {
                               @RequestParam("yep") String state1,
                               @RequestParam("posta")String postal,
                               @RequestParam("userCountry")String userCount,
-                              @RequestParam("capSeat") String choice) {
+                              @RequestParam("capSeat") String choice)
+    {
         String fromAdd= street + " " + routeM + " " + loc + " " + state+ " " + post + " "+count;
         String toAdd = strt + " " + rout + " " + local + " " + state1 + " " + postal + " " + userCount;
 
