@@ -52,9 +52,14 @@ public class HomeController {
 
 
     @RequestMapping("/newUser")
-    public String newUser(Model model,
+    public String newUser (){
+        return "newUser";
+    }
+
+    @RequestMapping("/successfullyRegistered")
+    public String success(Model model,
                           @RequestParam("userName") String userName,
-                          @RequestParam("userID") int userID,
+//                          @RequestParam("userID") int userID2,
                           @RequestParam("homeAddress") String homeAddress,
                           @RequestParam("email") String email,
                           @RequestParam("password") String password){
@@ -64,7 +69,7 @@ public class HomeController {
         Transaction tx2 = session3.beginTransaction();
         UsersEntity newUser = new UsersEntity();
         newUser.setUserName(userName);
-        newUser.setUserId(userID);
+//        newUser.setUserId(userID2);
         newUser.setHomeAddress(homeAddress);
         newUser.setEmail(email);
         newUser.setPassword(password);
@@ -72,7 +77,7 @@ public class HomeController {
         tx2.commit();
         session3.close();
 
-        return "newUser";
+        return "userWelcome";
 
     }
 
