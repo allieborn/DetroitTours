@@ -28,27 +28,26 @@
 </div>
 <div class="card">
     <div class="row">
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-block">
-                    <h3 class="card-title">UBER</h3>
-                    <p class="card-text"> ${product} <br> No. of Riders: ${cap}</p>
-                    <h5 class="card-title" name="price">${price}</h5>
-                    <h5 class="card-title" name="time">Driver is ${time} minutes away</h5>
-                    <a href="https://m.uber.com/ul/?action=setPickup"  action="finishSelection" class="btn btn-primary" target="_blank">Call Uber</a>
+        <c:forEach items="${product}" varStatus="loop">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-block">
+                        <h3 class="card-title">UBER</h3>
+                        <p class="card-text"> ${product[loop.index].toString()} <br> No. of Riders: ${capacity}</p>
+                        <h5 class="card-title" name="price">${price[loop.index].toString()}</h5>
+                        <h5 class="card-title" name="time">Driver is ${time[loop.index].toString()} minutes away</h5>
+                        <a href="https://m.uber.com/ul/?action=setPickup" action="finishSelection"
+                           class="btn btn-primary" target="_blank">Call Uber</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </c:forEach>
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-block">
                     <h3 class="card-title">LYFT</h3>
                     <p class="card-text">${typeOfLyft} <br> No. of Riders: ${capacity} </p>
-<<<<<<< Updated upstream
                     <h5 class="card-title">${displayPriceMin}-${displayPriceMax}</h5>
-=======
-                    <h5 class="card-title">${displayPriceMin} - ${displayPriceMax}</h5>
->>>>>>> Stashed changes
                     <h5 class="card-title">Driver is ${driverETA} minutes away</h5>
                     <a href="https://lyft.com/i" class="btn btn-primary" target="_blank" >Call Lyft</a>
                 </div>

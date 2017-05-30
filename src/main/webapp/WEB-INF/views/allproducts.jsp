@@ -28,20 +28,22 @@
 </div>
 <div class="card">
     <div class="row">
-    <%--FIXME iterate through all uber ArrayLists at once--%>
-        <div class="col-sm-6">
-            <div class="card">
-                <c:forEach var="results" items="${uber}">
-                <div class="card-block">
-                    <h3 class="card-title">UBER</h3>
-                    <p class="card-text"> ${results.displayName} <br> No. of Riders: ${results.displayName}</p>
-                    <h5 class="card-title" name="price">blank</h5>
-                    <h5 class="card-title" name="time">Driver is blank minutes away</h5>
-                    <a href="https://m.uber.com/ul/?action=setPickup"  action="finishSelection" class="btn btn-primary" target="_blank">Call Uber</a>
+        <c:forEach items="${uberProd}" varStatus="loop">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-block">
+                        <h3 class="card-title">UBER</h3>
+                        <p class="card-text"> ${uberProd[loop.index].displayName} <br> No. of Riders:
+                                ${uberProd[loop.index].capacity}</p>
+                        <h5 class="card-title" name="price">${uberPrice[loop.index].estimate}</h5>
+                        <h5 class="card-title" name="time">Driver is ${uberETA[loop.index].toString()} minutes
+                            away</h5>
+                        <a href="https://m.uber.com/ul/?action=setPickup" action="finishSelection"
+                           class="btn btn-primary" target="_blank">Call Uber</a>
+                    </div>
                 </div>
-                </c:forEach>
             </div>
-        </div>
+        </c:forEach>
 
         <div class="col-sm-6">
             <div class="card">

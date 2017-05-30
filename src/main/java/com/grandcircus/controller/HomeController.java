@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-
 
 import com.uber.sdk.rides.client.ServerTokenSession;
 import com.uber.sdk.rides.client.SessionConfiguration;
@@ -43,10 +43,10 @@ public class HomeController {
     private String LyftClientTokenKey;
 
 
-    @RequestMapping ("/")
+    @RequestMapping("/")
     public String displayForm(Model model) {
-        model.addAttribute ( "GAPIKey", GoogleAPIKey);
-        model.addAttribute ( "temp", "test");
+        model.addAttribute("GAPIKey", GoogleAPIKey);
+        model.addAttribute("temp", "test");
         return "userWelcome";
     }
 
@@ -73,34 +73,33 @@ public class HomeController {
         session3.close();
 
         return "newUser";
-    }
 
+    }
 
 
     @RequestMapping(value = "/ridecompare", method = RequestMethod.POST)
     public String ridecompare(Model model, @RequestParam("streetNum") String street,
-                              @RequestParam("routee")String routeM,
-                              @RequestParam("local")String loc,
-                              @RequestParam("nope")String state,
-                              @RequestParam("postal")String post,
-                              @RequestParam("count")String count,
+                              @RequestParam("routee") String routeM,
+                              @RequestParam("local") String loc,
+                              @RequestParam("nope") String state,
+                              @RequestParam("postal") String post,
+                              @RequestParam("count") String count,
                               @RequestParam("strtN") String strt,
-                              @RequestParam("rou")String rout,
-                              @RequestParam("loca")String local,
+                              @RequestParam("rou") String rout,
+                              @RequestParam("loca") String local,
                               @RequestParam("yep") String state1,
                               @RequestParam("posta")String postal,
                               @RequestParam("userCountry")String userCount,
-                              @RequestParam("capSeat") String choice)
-    {
-        String fromAdd= street + " " + routeM + " " + loc + " " + state+ " " + post + " "+count;
+                              @RequestParam("capSeat") String choice){
+        String fromAdd = street + " " + routeM + " " + loc + " " + state + " " + post + " " + count;
         String toAdd = strt + " " + rout + " " + local + " " + state1 + " " + postal + " " + userCount;
 
         model.addAttribute("fromAdd", fromAdd);
         model.addAttribute("toAdd", toAdd);
 
-        List <Product> results;
-        List <PriceEstimate> prices;
-        List <TimeEstimate> duration;
+        List<Product> results;
+        List<PriceEstimate> prices;
+        List<TimeEstimate> duration;
         String id = "";
 
         //ADDED TO TEST DATABASE
@@ -109,7 +108,7 @@ public class HomeController {
         Session session2 = sessionFact.openSession();
         Transaction tx = session2.beginTransaction();
         SelectionEntity newSelection = new SelectionEntity();
-        newSelection.setFromAddress(fromAdd); 
+        newSelection.setFromAddress(fromAdd);
         newSelection.setToAddress(toAdd);
         session2.save(newSelection);
         tx.commit();
@@ -120,43 +119,50 @@ public class HomeController {
         try {
 
             Coordinates results12 = GoogleGeocode.geocode(fromAdd);
-            float googleLat = (float)results12.latitude;
-            float googleLong = (float)results12.longitude;
+            float googleLat = (float) results12.latitude;
+            float googleLong = (float) results12.longitude;
 
             Coordinates results13 = GoogleGeocode.geocode(toAdd);
-            float googleLat2 = (float)results13.latitude;
-            float googleLong2 = (float)results13.longitude;
+            float googleLat2 = (float) results13.latitude;
+            float googleLong2 = (float) results13.longitude;
 
             //Uber AppConfig
-            SessionConfiguration config = new SessionConfiguration.Builder ()
-                    .setClientId (UberClientIdKey)
-                    .setServerToken (UberServerTokenKey)
-                    .build ();
-            ServerTokenSession session = new ServerTokenSession ( config );
+            SessionConfiguration config = new SessionConfiguration.Builder()
+                    .setClientId(UberClientIdKey)
+                    .setServerToken(UberServerTokenKey)
+                    .build();
+            ServerTokenSession session = new ServerTokenSession(config);
 
-            UberRidesApi ride = UberRidesApi.with ( session ).build ();
-            RidesService service = ride.createService ();
+            UberRidesApi ride = UberRidesApi.with(session).build();
+            RidesService service = ride.createService();
 
             //Lyft AppConfig
             ApiConfig apiConfig = new ApiConfig.Builder()
                     .setClientId(LyftClientIdKey)
                     .setClientToken(LyftClientTokenKey)
-                    .build ();
+                    .build();
             //Uber ProductType
-            Response <ProductsResponse> response = service.getProducts ( googleLat, googleLong ).execute ();
-            ProductsResponse products = response.body ();
-            results = products.getProducts ();
+            Response<ProductsResponse> response = service.getProducts(googleLat, googleLong).execute();
+            ProductsResponse products = response.body();
+            results = products.getProducts();
 
             //Lyft ProductType
             //WILL ADDRESS WITH STEPHANIE AND REST OF GROUP
 
             //Uber Price
-            Response <PriceEstimatesResponse> respond = service.getPriceEstimates ( googleLat, googleLong,
-                    googleLat2, googleLong2 ).execute ();
-            PriceEstimatesResponse priceTag = respond.body ();
-            prices = priceTag.getPrices ();
+            Response<PriceEstimatesResponse> respond = service.getPriceEstimates(googleLat, googleLong,
+                    googleLat2, googleLong2).execute();
+            PriceEstimatesResponse priceTag = respond.body();
+            prices = priceTag.getPrices();
 
-            //Lyft Price (Standard and LyftPlus(4+ people)
+            //Uber Time
+            Response<TimeEstimatesResponse> responseTime = service.getPickupTimeEstimate(googleLat, googleLong,
+                    id).execute();
+
+            TimeEstimatesResponse time = responseTime.body();
+            duration = time.getTimes();
+
+            //Lyft Price (Standard and LyftPlus(4+ people))
             String lyftType = "";
             int numSeats = 0;
             String displayPriceMin = "";
@@ -182,9 +188,7 @@ public class HomeController {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }
-
-            else if (choice.equals("2")) {
+            } else if (choice.equals("2")) {
                 try {
                     LyftPublicApi lyftPublicApi = new LyftApiFactory(apiConfig).getLyftPublicApi();
                     Call<CostEstimateResponse> costEstimateCall = lyftPublicApi.getCosts(results12.latitude, results12.longitude, "lyft_plus", results13.latitude, results13.longitude);
@@ -208,9 +212,9 @@ public class HomeController {
             //"All Types" is selected, condition will return new jsp page compared to when one type of Lyft is picked
             else {
                 String name = "";
-                String lyftName = "";
+                String lyftName;
                 int numRide = 0;
-                int numRides = 0;
+                int numRides;
                 String displayPriceMinStand = "";
                 String displayPriceMaxStand = "";
                 String displayPriceMinPlus = "";
@@ -307,10 +311,21 @@ public class HomeController {
                     model.addAttribute("standardETA", lyftStandETA);
                     model.addAttribute("plusETA", lyftPlusETA);
 
-                    return "allproducts";
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
+
+                //Uber List all types
+                ArrayList<Integer> eta = new ArrayList<Integer>();
+                for (int x = 0; x < duration.size(); x++) {
+                    int seconds = duration.get(x).getEstimate();
+                    eta.add((seconds % 3600) / 60);
+                }
+                model.addAttribute("uberProd", results);
+                model.addAttribute("uberPrice", prices);
+                model.addAttribute("uberETA", eta);
+                return "allproducts";
             }
 
             model.addAttribute("typeOfLyft", lyftType);
@@ -318,14 +333,6 @@ public class HomeController {
             model.addAttribute("displayPriceMin", displayPriceMin);
             model.addAttribute("displayPriceMax", displayPriceMax);
 
-
-
-            //Uber Time
-            Response <TimeEstimatesResponse> responseTime = service.getPickupTimeEstimate ( googleLat, googleLong,
-                    id ).execute ();
-
-            TimeEstimatesResponse time = responseTime.body ();
-            duration = time.getTimes ();
 
             //Lyft Time
             try {
@@ -354,40 +361,46 @@ public class HomeController {
 
 
             //Read Uber Data
-            int numRider = Integer.parseInt(choice);
 
-            String displayName = "";
-            String priceEst = "";
+            ArrayList<String> displayName = new ArrayList<String>();
+            ArrayList<String> priceEst = new ArrayList<String>();
             int cap = 0;
-            int seconds, eta = 0;
-            for (int x = 0; x < results.size(); x++){
-                if (results.get(x).getCapacity() == numRider){
-                    displayName = results.get ( x ).getDisplayName ();;
-                    cap = results.get ( x ).getCapacity ();
-                    priceEst = prices.get ( x ).getEstimate ();
-                    seconds = duration.get ( x ).getEstimate ();
-                    eta = (seconds % 3600) / 60;
+            int seconds;
+            ArrayList<Integer> eta = new ArrayList<Integer>();
+
+
+            if (choice.equals("1")) {
+                for (int x = 0; x < results.size(); x++) {
+                    if (results.get(x).getCapacity() == 4) {
+                        displayName.add(results.get(x).getDisplayName());
+                        cap = 4;
+                        priceEst.add(prices.get(x).getEstimate());
+                        seconds = duration.get(x).getEstimate();
+                        eta.add((seconds % 3600) / 60);
+                    }
                 }
-                //FIXME
-                else {
-                    model.addAttribute("uber", results);
-                    model.addAttribute("uber", prices);
-                    model.addAttribute("uber", duration);
-                    return "allproducts";
+
+            }
+            else if (choice.equals("2")) {
+                for (int x = 0; x < results.size(); x++) {
+                    if (results.get(x).getCapacity() == 6) {
+                        displayName.add(results.get(x).getDisplayName());
+                        cap = 6;
+                        priceEst.add(prices.get(x).getEstimate());
+                        seconds = duration.get(x).getEstimate();
+                        eta.add((seconds % 3600) / 60);
+                    }
                 }
             }
 
 
-
-            model.addAttribute ( "product", displayName );
-            model.addAttribute ( "cap", cap );
-            model.addAttribute ( "price", priceEst );
-            model.addAttribute ( "time", eta );
+            model.addAttribute("product", displayName);
+            model.addAttribute("capacity", cap);
+            model.addAttribute("price", priceEst);
+            model.addAttribute("time", eta);
 
         } catch (IOException e) {
-            e.printStackTrace ();
-            //} catch (JSONException e) {
-            //    e.printStackTrace();
+            e.printStackTrace();
         }
         return "ridecompare";
     }

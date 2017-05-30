@@ -89,7 +89,7 @@
         <input type="radio" name="capSeat" value="3">All Types<br>
     </fieldset>
 
-    <input type="submit" value="FindaRide" align="center"/>
+    <input type="submit" value="Find A Ride" align="center"/>
 
 </form>
 
