@@ -125,6 +125,7 @@ public class HomeController {
         model.addAttribute("fromAdd", fromAdd);
         model.addAttribute("toAdd", toAdd);
 
+
         List<Product> results;
         List<PriceEstimate> prices;
         List<TimeEstimate> duration;
