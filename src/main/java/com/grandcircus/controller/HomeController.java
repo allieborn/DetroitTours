@@ -2,6 +2,8 @@ package com.grandcircus.controller;
 
 import com.grandcircus.models.SelectionEntity;
 import com.grandcircus.models.UsersEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.cookie.Cookie;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -26,6 +28,9 @@ import com.lyft.networking.ApiConfig;
 import com.lyft.networking.LyftApiFactory;
 import com.lyft.networking.apiObjects.*;
 import com.lyft.networking.apis.LyftPublicApi;
+import org.springframework.web.context.support.HttpRequestHandlerServlet;
+import org.springframework.web.servlet.HttpServletBean;
+import org.springframework.web.servlet.ModelAndView;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -46,10 +51,19 @@ public class HomeController {
     @RequestMapping("/")
     public String displayForm(Model model) {
         model.addAttribute("GAPIKey", GoogleAPIKey);
-        model.addAttribute("temp", "test");
+        //response.addCookie(new Cookie ( "userid","peter"));
         return "userWelcome";
     }
 
+    @RequestMapping("favorites")
+    public String plainFavo() {
+        return "favorites";
+    }
+
+    @RequestMapping("login")
+    public String plainLogin() {
+        return "login";
+    }
 
     @RequestMapping("/newUser")
     public String newUser (){
@@ -98,6 +112,7 @@ public class HomeController {
         String fromAdd = street + " " + routeM + " " + loc + " " + state + " " + post + " " + count;
         String toAdd = strt + " " + rout + " " + local + " " + state1 + " " + postal + " " + userCount;
 
+        //fromAdd and to Add to pass to Lyft and Uber APIs.
         model.addAttribute("fromAdd", fromAdd);
         model.addAttribute("toAdd", toAdd);
 
@@ -119,9 +134,7 @@ public class HomeController {
         session2.close();
         //ADDED TO TEST DATABASE
 
-
         try {
-
             Coordinates results12 = GoogleGeocode.geocode(fromAdd);
             float googleLat = (float) results12.latitude;
             float googleLong = (float) results12.longitude;
@@ -129,6 +142,12 @@ public class HomeController {
             Coordinates results13 = GoogleGeocode.geocode(toAdd);
             float googleLat2 = (float) results13.latitude;
             float googleLong2 = (float) results13.longitude;
+
+            //passing fromAdd Lat Lng, toAdd Lat Lng for map route
+            model.addAttribute ( "fromLat", results12.latitude);
+            model.addAttribute ( "fromLng", results12.longitude);
+            model.addAttribute ( "toLat", results13.latitude);
+            model.addAttribute ( "toLng", results13.longitude);
 
             //Uber AppConfig
             SessionConfiguration config = new SessionConfiguration.Builder()

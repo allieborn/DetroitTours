@@ -13,6 +13,17 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <style>
+        /* map route style - can be combined with main CSS*/
+        #map {
+            height: 100%;
+            float: left;
+            width: 70%;
+            height: 100%;
+        }
+    </style>
+
 </head>
 <body>
 <div class="card">
@@ -54,7 +65,43 @@
             </div>
         </div>
     </div>
-
 </div>
+Map Route below
+<div id="map">
+</div>
+
+<script>
+    //initialize map
+    function initMap() {
+        var mainLoc = {lat: 42.3314, lng: -83.0458};
+        var fromLoc = {lat: ${fromLat}, lng: ${fromLng}};
+        var endLoc = {lat: ${toLat}, lng: ${toLng}};
+
+        var map = new google.maps.Map(document.getElementById('map'), {zoom: 4, center: mainLoc});
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer({draggable: true, map: map});
+
+        displayRoute(fromLoc, endLoc, directionsService, directionsDisplay);
+    }
+
+    //display route
+    function displayRoute(origin, destination, service, display) {
+        service.route({
+            origin: origin,
+            destination: destination,
+            travelMode: 'DRIVING',
+            avoidTolls: false
+        }, function (response, status) {
+            if (status === 'OK') {
+                display.setDirections(response);
+            } else {
+                alert('Could not display directions due to: ' + status);
+            }
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=${GoogleAPIKey}&libraries=places&callback=initAutocomplete" async defer>
+</script>
+
 </body>
 </html>

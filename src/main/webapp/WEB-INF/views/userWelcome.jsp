@@ -40,6 +40,7 @@
 
 <h1>Please Enter Current Location</h1><br>
     <div class="container">
+        <button onclick="historyCheck()">history</button>
         <div id="locationField1">
             <input id="autocomplete" name="pickup" placeholder="Enter your address" onFocus="geolocate()" type="text"
                    size="45"/>
@@ -62,6 +63,7 @@
 
     <h1>Please Enter Destination</h1><br>
     <div class="container">
+        <button onclick="historyCheck()">history</button>
         <div id="locationField2">
             <input id="autocomplete1" placeholder="Enter your address" onFocus="geolocate()" type="text" size="45"/>
         </div>
@@ -198,7 +200,6 @@
         }
     }
 
-
     function validateForm() {
         var fromStreetNum = document.forms["form"]["streetNum"].value;
         var toStreetNum = document.forms["form"]["strtN"].value;
@@ -246,7 +247,46 @@
         }return true;
     }
 
+    //check cookie
+    function historyCheck() {
+        //var ca = document.cookie;
+        console.log(getCookie('userid') );
 
+        var testUser = getCookie('userid');
+        if (testUser != "" ) {
+            //gotoLogin();
+            gotoFave();
+        } else {
+            gotoFave();
+        }
+    }
+
+    //parse cookies
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    //goto Favorite page
+    function gotoFave(){
+        window.open("/favorites", "MsgWindow", "toolbar=yes, scrollbar=yes,resizable=yes,top=500,left=500,width=500,height=500");
+    }
+
+    //goto Login page
+    function gotoLogin(){
+        window.open("/login", "MsgWindow", "toolbar=yes, scrollbar=yes,resizable=yes,top=500,left=500,width=500,height=500");
+    }
 
 </script>
 <br>
