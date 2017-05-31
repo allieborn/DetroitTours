@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: PAS8
@@ -12,5 +13,14 @@
 </head>
 <body>
 <h1>This is the Favorite Page</h1>
+<table border=1>
+    <c:forEach var="myvar" items="${cList}">
+        <tr>
+            <td>${myvar.userId} -- this will be remove</td>
+            <td>${myvar.userName} -- this will be remove</td>
+            <td>${myvar.homeAddress}</td>
+        </tr>
+    </c:forEach>
+</table>
 </body>
 </html>

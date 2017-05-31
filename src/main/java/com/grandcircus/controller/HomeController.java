@@ -4,6 +4,7 @@ import com.grandcircus.models.SelectionEntity;
 import com.grandcircus.models.UsersEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.cookie.Cookie;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -56,8 +57,16 @@ public class HomeController {
     }
 
     @RequestMapping("favorites")
-    public String plainFavo() {
-        return "favorites";
+    public ModelAndView plainFavo() {
+        //org.hibernate.cfg.Configuration cfg = new org.hibernate.cfg.Configuration ().configure ( "src/main/resources/hibernate.cfg.xml" );
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory ();
+        Session usersSession = sessionFact.openSession ();
+        usersSession.beginTransaction ();
+
+        Criteria c = usersSession.createCriteria ( UsersEntity.class);
+        ArrayList <UsersEntity> usersArrayList = (ArrayList <UsersEntity>) c.list ();
+        return new ModelAndView ( "favorites", "cList", usersArrayList );
     }
 
     @RequestMapping("login")
