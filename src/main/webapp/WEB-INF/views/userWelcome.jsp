@@ -10,31 +10,26 @@
 <head>
     <title>Address Form</title>
 
-    <link rel="stylesheet" href="/resources/css/style.css">
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
 
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-
-    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-    <link type="text/css" rel="stylesheet" src="/resources/style.css">
-
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
 
 </head>
 
 <body>
-
-<header role="banner">
-    <div id="cd-logo"><h2>LUBER</h2><a href="#0"></a></div>
-
-<nav class="main-nav">
-    <ul>
-        <li><a class="cd-signin" href="/login">Sign in</a></li>
-        <li><a class="cd-signup" href="/newUser">Sign up</a></li>
-    </ul>
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <h2>LUBER</h2>
+        <ul>
+            <li><a class="register" href="/newUser">Sign Up</a> </li>
+            <li><a class="logIn" href="#">Sign In</a> </li>
+        </ul>
+    </div>
 </nav>
-</header>
+
 
 <form name="form" method="post" action="/ridecompare" onsubmit="return validateForm()">
 
@@ -42,7 +37,7 @@
     <div class="container">
         <button onclick="historyCheck()">history</button>
         <div id="locationField1">
-            <input id="autocomplete" name="pickup" placeholder="Enter your address" onFocus="geolocate()" type="text"
+            <input id="autocomplete" name="pickup" placeholder="Pick Up Address" onFocus="geolocate()" type="text"
                    size="45"/>
         </div>
     </div>
@@ -65,7 +60,7 @@
     <div class="container">
         <button onclick="historyCheck()">history</button>
         <div id="locationField2">
-            <input id="autocomplete1" placeholder="Enter your address" onFocus="geolocate()" type="text" size="45"/>
+            <input id="autocomplete1" placeholder="Drop Off Address" onFocus="geolocate()" type="text" size="45"/>
         </div>
     </div>
 
@@ -299,3 +294,4 @@
 </script>
 </body>
 </html>
+it
