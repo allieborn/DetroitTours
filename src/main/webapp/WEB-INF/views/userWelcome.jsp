@@ -30,7 +30,7 @@
 
 <nav class="main-nav">
     <ul>
-        <li><a class="cd-signin" href="#0">Sign in</a></li>
+        <li><a class="cd-signin" href="/login">Sign in</a></li>
         <li><a class="cd-signup" href="/newUser">Sign up</a></li>
     </ul>
 </nav>
