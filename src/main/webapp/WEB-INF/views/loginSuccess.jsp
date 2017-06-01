@@ -11,6 +11,7 @@
     <title>Login Success</title>
 </head>
 <body>
-Login Success
+<p>Welcome back! We're glad to have you!</p>
+<p>Click <a href="/">here</a> to start searching for rides near you. </p>
 </body>
 </html>

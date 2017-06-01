@@ -8,10 +8,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<title>Favorites</title>
+<title>Login Fail</title>
 </head>
 <body>
-<h1>Login Fail Page</h1>
+<p>Hmmm...looks like that wasn't the correct password...</p>
+<p>Want to try again? Click <a href="/login">here</a>  </p>
+<p>Need to create a new account? Click <a href="/newUser">here</a>  </p>
 
 </table>
 </body>

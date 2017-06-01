@@ -90,7 +90,7 @@ public class HomeController {
         String password1 = user.getPassword();
 
         if (password1.equals(password) ){
-            return new ModelAndView("userWelcome", "cList", user);
+            return new ModelAndView("loginSuccess", "cList", user);
         } else return new ModelAndView("loginFail", "cList", user);
 
         }
