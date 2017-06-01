@@ -17,7 +17,6 @@ import com.uber.sdk.rides.client.services.RidesService;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +29,6 @@ import retrofit2.Response;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -55,6 +53,11 @@ public class HomeController {
         return "userWelcome";
     }
 
+    @RequestMapping("/aboutus")
+    public String teamPage(){
+        return "aboutUs";
+    }
+
     @RequestMapping("favorites")
     public ModelAndView plainFavo() {
         //org.hibernate.cfg.Configuration cfg = new org.hibernate.cfg.Configuration ().configure ( "src/main/resources/hibernate.cfg.xml" );
@@ -74,7 +77,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
-    public ModelAndView loginCheck(Model model, @RequestParam("email") String email,
+    public ModelAndView loginCheck(@RequestParam("email") String email,
                              @RequestParam("password") String password) {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
@@ -93,16 +96,13 @@ public class HomeController {
         }
 
 
-
-
     @RequestMapping("/newUser")
     public String newUser() {
         return "newUser";
     }
 
     @RequestMapping("/successfullyRegistered")
-    public String success(Model model,
-                          @RequestParam("userName") String userName,
+    public String success(@RequestParam("userName") String userName,
                           @RequestParam("homeAddress") String homeAddress,
                           @RequestParam("email") String email,
                           @RequestParam("password") String password) {
@@ -120,8 +120,6 @@ public class HomeController {
         session3.close ();
 
         return "successfullyRegistered";
-        //return "userWelcome";
-
     }
 
 

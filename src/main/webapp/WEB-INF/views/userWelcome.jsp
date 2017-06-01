@@ -9,8 +9,11 @@
 <html lang="en">
 <head>
     <title>Address Form</title>
-
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <link type="text/css" rel="stylesheet" href="/resources/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="/resources/css/ct-paper.css">
+
 
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
@@ -20,76 +23,143 @@
 </head>
 
 <body>
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-ct-transparent" role="navigation-demo" id="demo-navbar">
     <div class="container">
-        <h2>LUBER</h2>
-        <ul>
-            <li><a class="register" href="/newUser">Sign Up</a> </li>
-            <li><a class="logIn" href="#">Sign In</a> </li>
-        </ul>
-    </div>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/">
+                <div class="logo-container">
+                    <div class="brand">
+                        LUBER
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navigation-example-2">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/login" class="btn btn-danger btn-simple">Log In</a>
+                </li>
+                <li>
+                    <a href="/newUser" class="btn btn-danger btn-simple">Register</a>
+                </li>
+                <li>
+                    <a href="/aboutus" target="_blank"
+                       class="btn btn-danger btn-fill">Meet The Team</a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-->
 </nav>
 
+<div class="wrapper">
+    <div class="demo-header demo-header-image">
+        <div class="motto">
+            <h1 class="title-uppercase">LUBER</h1>
+            <h3>Compare Uber and Lyft at once!</h3>
+        </div>
+    </div>
+    <div class="main">
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 ">
 
-<form name="form" method="post" action="/ridecompare" onsubmit="return validateForm()">
+                        <form name="form" method="post" action="/ridecompare" onsubmit="return validateForm()">
+                            <div class="form-group">
+                                <h3 class="">Please Enter Current Location</h3><br>
 
-<h1>Please Enter Current Location</h1><br>
-    <div class="container">
-        <button onclick="historyCheck()">history</button>
-        <div id="locationField1">
-            <input id="autocomplete" name="pickup" placeholder="Pick Up Address" onFocus="geolocate()" type="text"
-                   size="45"/>
+
+                                <div id="locationField1">
+                                    <input id="autocomplete" class="form-control" name="pickup"
+                                           placeholder="Pick Up Address"
+                                           onFocus="geolocate()" type="text"
+                                           size="45"/>
+                                    <br>
+                                    <button class="btn" onclick="historyCheck()">history</button>
+                                </div>
+
+
+                                <input type="hidden" class="field" id="street_number" name="streetNum" disabled="true"/>
+                                <input type="hidden" class="field" id="route" name="routee" disabled="true"/>
+                                <input type="hidden" class="field" id="locality" name="local" disabled="true"/>
+                                <input type="hidden" class="field" id="administrative_area_level_1" name="nope"
+                                       disabled="true"/>
+                                <input type="hidden" class="field" id="postal_code" name="postal" disabled="true"/>
+                                <input type="hidden" class="field" name="count" id="country" disabled="true"/>
+                            </div>
+                            <div class="form-group">
+                                <h3 class="">Please Enter Destination</h3><br>
+
+
+                                <div id="locationField2">
+                                    <input id="autocomplete1" class="form-control" placeholder="Drop Off Address"
+                                           onFocus="geolocate()" type="text" size="45"/>
+                                    <br>
+                                    <button class="btn" onclick="historyCheck()">history</button>
+                                </div>
+
+
+                                <input type="hidden" class="field" id="street_number1" name="strtN" disabled="true"/>
+                                <input type="hidden" class="field" id="route1" name="rou" disabled="true"/>
+                                <input type="hidden" class="field" id="locality1" name="loca" disabled="true"/>
+                                <input type="hidden" class="field" id="administrative_area_level_11" name="yep"
+                                       disabled="true"/></td>
+                                <input type="hidden" class="field" id="postal_code1" name="posta" disabled="true"/>
+                                <input type="hidden" class="field" name="userCountry" id="country1" disabled="true"/>
+                            </div>
+
+
+                            <div class="form-group">
+                                <h4>Number of Riders</h4>
+                                <label class="radio">
+                                    <input type="radio" name="capSeat" data-toggle="radio" value="1">
+                                    <i></i>4 Riders
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="capSeat" data-toggle="radio" value="2">
+                                    <i></i>6 Riders
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="capSeat" data-toggle="radio" value="3" checked>
+                                    <i></i>All Types
+                                </label>
+
+
+                                <button class="btn" type="submit">Find A Ride</button>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+</div>
 
-    <input type="hidden" class="field" id="street_number" name="streetNum" disabled="true"/>
+<script src="/resources/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="/resources/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
 
-    <input type="hidden" class="field" id="route" name="routee" disabled="true"/>
+<script src="/resources/js/bootstrap.js" type="text/javascript"></script>
 
-    <input type="hidden" class="field" id="locality" name="local" disabled="true"/>
+<!--  Plugins -->
+<script src="/resources/js/ct-paper-checkbox.js"></script>
+<script src="/resources/js/ct-paper-radio.js"></script>
+<script src="/resources/js/bootstrap-select.js"></script>
+<script src="/resources/js/bootstrap-datepicker.js"></script>
 
-    <input type="hidden" class="field" id="administrative_area_level_1" name="nope" disabled="true"/>
-
-    <input type="hidden" class="field" id="postal_code" name="postal" disabled="true"/>
-
-    <input type="hidden" class="field" name="count" id="country" disabled="true"/>
-
-
-    <h1>Please Enter Destination</h1><br>
-    <div class="container">
-        <button onclick="historyCheck()">history</button>
-        <div id="locationField2">
-            <input id="autocomplete1" placeholder="Drop Off Address" onFocus="geolocate()" type="text" size="45"/>
-        </div>
-    </div>
-
-
-    <input type="hidden" class="field" id="street_number1" name="strtN" disabled="true"/>
-
-    <input type="hidden" class="field" id="route1" name="rou" disabled="true"/>
-
-    <input type="hidden" class="field" id="locality1" name="loca" disabled="true"/>
-
-    <input type="hidden" class="field" id="administrative_area_level_11" name="yep" disabled="true"/></td>
-
-    <input type="hidden" class="field" id="postal_code1" name="posta" disabled="true"/>
-
-    <input type="hidden" class="field" name="userCountry" id="country1" disabled="true"/>
-
-    <fieldset>
-        <legend>Filters</legend>
-        <h4>Number of Riders</h4>
-        <input type="radio" name="capSeat" value="1">4 Riders<br>
-        <input type="radio" name="capSeat" value="2">6 Riders<br>
-        <input type="radio" name="capSeat" value="3">All Types<br>
-    </fieldset>
-
-    <input type="submit" value="Find A Ride" align="center"/>
-
-</form>
-
-    <script>
+<script src="/resources/js/ct-paper.js"></script>
+<script>
     // This example displays an address form, using the autocomplete feature
     // of the Google Places API to help users fill in the information.
 
@@ -205,7 +275,7 @@
         var fromState = document.forms["form"]["administrative_area_level_1"].value;
         var toState = document.forms["form"]["administrative_area_level_11"].value;
 
-        if (autocomplete != ({types:['establishment']}) || (autocomplete2 != ({types:['establishment']}))){
+        if (autocomplete != ({types: ['establishment']}) || (autocomplete2 != ({types: ['establishment']}))) {
 
             if (fromStreetNum == "") {
                 alert("Looks like you haven't entered a valid address...");
@@ -239,16 +309,17 @@
                 alert("Looks like you haven't entered a valid address...");
                 return false;
             }
-        }return true;
+        }
+        return true;
     }
 
     //check cookie
     function historyCheck() {
         //var ca = document.cookie;
-        console.log(getCookie('userid') );
+        console.log(getCookie('userid'));
 
         var testUser = getCookie('userid');
-        if (testUser != "" ) {
+        if (testUser != "") {
             //gotoLogin();
             gotoFave();
         } else {
@@ -261,7 +332,7 @@
         var name = cname + "=";
         var decodedCookie = decodeURIComponent(document.cookie);
         var ca = decodedCookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
+        for (var i = 0; i < ca.length; i++) {
             var c = ca[i];
             while (c.charAt(0) == ' ') {
                 c = c.substring(1);
@@ -274,12 +345,12 @@
     }
 
     //goto Favorite page
-    function gotoFave(){
+    function gotoFave() {
         window.open("/favorites", "MsgWindow", "toolbar=yes, scrollbar=yes,resizable=yes,top=500,left=500,width=500,height=500");
     }
 
     //goto Login page
-    function gotoLogin(){
+    function gotoLogin() {
         window.open("/login", "MsgWindow", "toolbar=yes, scrollbar=yes,resizable=yes,top=500,left=500,width=500,height=500");
     }
 
@@ -287,11 +358,10 @@
 <br>
 
 
-
 <!--script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDj_Zhpzv6SH4i-uPWy10gXtOpXfEZYw8&libraries=places&callback=initAutocomplete"
         async defer></script-->
-<script src="https://maps.googleapis.com/maps/api/js?key=${GoogleAPIKey}&libraries=places&callback=initAutocomplete" async defer>
+<script src="https://maps.googleapis.com/maps/api/js?key=${GoogleAPIKey}&libraries=places&callback=initAutocomplete"
+        async defer>
 </script>
 </body>
 </html>
-it
