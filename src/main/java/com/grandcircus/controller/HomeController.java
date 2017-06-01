@@ -178,6 +178,7 @@ public class HomeController {
                     model.addAttribute("fromLng", results12.longitude);
                     model.addAttribute("toLat", results13.latitude);
                     model.addAttribute("toLng", results13.longitude);
+                    model.addAttribute("GoogleAPIKey",GoogleAPIKey);
 
                     //Uber AppConfig
                     SessionConfiguration config = new SessionConfiguration.Builder()

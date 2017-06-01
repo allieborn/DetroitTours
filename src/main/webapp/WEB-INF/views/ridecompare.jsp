@@ -155,7 +155,7 @@ Map Route below
         });
     }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=${GoogleAPIKey}&libraries=places&callback=initAutocomplete" async defer>
+<script src="https://maps.googleapis.com/maps/api/js?key=${GoogleAPIKey}&libraries=places&callback=initMap" async defer>
 </script>
 
 </body>
