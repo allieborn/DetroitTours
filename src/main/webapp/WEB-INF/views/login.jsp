@@ -54,8 +54,7 @@
                     <a href="/newUser" class="btn btn-danger btn-simple">Register</a>
                 </li>
                 <li>
-                    <a href="/aboutus" target="_blank"
-                       class="btn btn-danger btn-fill">Meet The Team</a>
+                    <a href="/aboutus" class="btn btn-danger btn-fill">Meet The Team</a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
