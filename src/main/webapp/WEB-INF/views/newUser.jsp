@@ -51,35 +51,26 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-->
 </nav>
+<div class="wrapper">
+    <div class="container">
+        <h3>New Customer Registration</h3>
 
-<h2>New Customer Registration</h2>
+        <form method="POST" action="/successfullyRegistered" <%--onsubmit="return validateForm()"--%>>
 
-<form method="POST" action="/successfullyRegistered" <%--onsubmit="return validateForm()"--%>>
+            <input type="text" name="userName" placeholder="Username">
+            <br>
+            <input type="text" name="email" placeholder="Email">
+            <br>
+            <input type="password" name="password" placeholder="Password">
+            <br>
+            <input type="text" name="homeAddress" placeholder="Save Home Address">
+            <br>
+            <br>
+            <button class="btn" type="submit">Register</button>
 
-    <table>
-        Enter a username of your choice:<br>
-        <input type="text" name="userName">
-        <br>
-        Enter your email:<br>
-        <input type="text" name="email">
-        <br>
-        Choose a password:<br>
-        <input type="text" name="password">
-        <br>
-        Enter an address that you'd like to save as a home address:<br>
-        <input type="text" name="homeAddress">
-        <br>
-    </table>
-
-    <table>
-        <td colspan="2"></td>
-        <td>
-
-            <input type="submit" value="Submit"/>
-        </td>
-        </tr>
-    </table>
-</form>
+        </form>
+    </div>
+</div>
 
 <%--<script>--%>
 

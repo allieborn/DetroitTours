@@ -61,72 +61,35 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-->
 </nav>
-<h1>Login Page</h1>
-<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 
-<div class="form">
-    <ul class="tab-group">
-        <li class="tab active"><a href="#signup">Sign Up</a></li>
-        <li class="tab"><a href="#login">Log In</a></li>
-    </ul>
-<%--
-    <div class="tab-content">
-        <div id="signup">
-            <h1>Sign Up for Free</h1>
-            <form action="/" method="post">
+<div class="wrapper">
+    <div class="container">
+        <h3>Welcome Back!<br>Login Page</h3>
+        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+        <br>
 
-                <div class="top-row">
+        <div class="form">
+            <div id="login">
+                <form action="/loginCheck" method="post">
                     <div class="field-wrap">
-                        <label>
-                            First Name<span class="req">*</span>
-                        </label>
-                        <input type="text" required autocomplete="off"/>
+                        <input type="email" name="email" placeholder="Email" required autocomplete="off"/>
                     </div>
-
                     <div class="field-wrap">
-                        <label>
-                            Last Name<span class="req">*</span>
-                        </label>
-                        <input type="text" required autocomplete="off"/>
+                        <input type="password" name="password" placeholder="Password" required autocomplete="off"/>
                     </div>
-                </div>
+                    <br>
+                    <button class="btn" type="submit"/>Log In</button>
+                    <br>
+                    <a class="sign-out" href="#" onclick="signOut();">Sign out</a>
 
-                <div class="field-wrap">
-                    <label>
-                        Email Address<span class="req">*</span>
-                    </label>
-                    <input type="email" required autocomplete="off"/>
-                </div>
-                <div class="field-wrap">
-                    <label>
-                        Set A Password<span class="req">*</span>
-                    </label>
-                    <input type="password" required autocomplete="off"/>
-                </div>
-                <button type="submit" class="button button-block"/>
-                Get Started</button>
-            </form>
+                    <%--Not Enough Time - Stretch Goal--%>
+                    <%--<p class="forgot"><a href="#">Forgot Password?</a></p>--%>
+                </form>
+            </div>
         </div>
-    </div><!-- tab-content -->
---%>
-        <div id="login">
-            <h1>Welcome Back!</h1>
-
-            <form action="/loginCheck" method="post">
-                <div class="field-wrap">
-                    <label>Email<span class="req">*</span></label>
-                    <input type="email" name="email" required autocomplete="off"/>
-                </div>
-                <div class="field-wrap">
-                    <label>Password<span class="req">*</span></label>
-                    <input type="password" name="password" required autocomplete="off"/>
-                </div>
-                <p class="forgot"><a href="#">Forgot Password?</a></p>
-                <button class="button button-block"/>Log In</button>
-            </form>
-        </div>
+    </div>
 </div>
-<!-- /form -->
+
 
 <script src="/resources/js/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="/resources/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
@@ -160,7 +123,6 @@
 
 </script>
 
-<a href="#" onclick="signOut();">Sign out</a>
 <script>
     function signOut() {
         var auth2 = gapi.auth2.getAuthInstance();

@@ -4341,9 +4341,10 @@ pre.prettyprint{
   margin-top: 50px;
 }
 
-.container-ride {
-    margin-left: inherit;
-    margin-right: inherit;
+
+.sign-out {
+    color: inherit;
+    font-size: 15px;
 }
 
 
