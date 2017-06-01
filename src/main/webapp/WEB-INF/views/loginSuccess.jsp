@@ -12,8 +12,5 @@
 </head>
 <body>
 Login Success
-${userName1}
-${password1}
-${pos}
 </body>
 </html>

@@ -5,14 +5,14 @@
   Time: 2:51 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>Login Fail</title>
+<title>Favorites</title>
 </head>
 <body>
-Login Fail
-${userName1}
-${password1}
-${usersArrayList}
+<h1>Login Fail Page</h1>
+
+</table>
 </body>
 </html>

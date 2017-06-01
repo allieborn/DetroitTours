@@ -252,7 +252,7 @@
             //gotoLogin();
             gotoFave();
         } else {
-            gotoFave();
+            gotoLogin();
         }
     }
 

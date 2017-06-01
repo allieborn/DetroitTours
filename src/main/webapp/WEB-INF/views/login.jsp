@@ -69,8 +69,8 @@
 
             <form action="/loginCheck" method="post">
                 <div class="field-wrap">
-                    <label>Username<span class="req">*</span></label>
-                    <input type="username" name="username" required autocomplete="off"/>
+                    <label>Email<span class="req">*</span></label>
+                    <input type="email" name="email" required autocomplete="off"/>
                 </div>
                 <div class="field-wrap">
                     <label>Password<span class="req">*</span></label>

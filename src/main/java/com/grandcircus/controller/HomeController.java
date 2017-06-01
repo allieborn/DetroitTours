@@ -14,11 +14,10 @@ import com.uber.sdk.rides.client.SessionConfiguration;
 import com.uber.sdk.rides.client.UberRidesApi;
 import com.uber.sdk.rides.client.model.*;
 import com.uber.sdk.rides.client.services.RidesService;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +30,7 @@ import retrofit2.Response;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -50,7 +50,7 @@ public class HomeController {
     //main controller passing G-key
     @RequestMapping("/")
     public String displayForm(Model model) {
-        model.addAttribute ( "GAPIKey", GoogleAPIKey );
+        model.addAttribute("GAPIKey", GoogleAPIKey);
         //response.addCookie(new Cookie ( "userid","peter"));
         return "userWelcome";
     }
@@ -58,14 +58,14 @@ public class HomeController {
     @RequestMapping("favorites")
     public ModelAndView plainFavo() {
         //org.hibernate.cfg.Configuration cfg = new org.hibernate.cfg.Configuration ().configure ( "src/main/resources/hibernate.cfg.xml" );
-        Configuration cfg = new Configuration ().configure ( "hibernate.cfg.xml" );
-        SessionFactory sessionFact = cfg.buildSessionFactory ();
-        Session usersSession = sessionFact.openSession ();
-        usersSession.beginTransaction ();
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session usersSession = sessionFact.openSession();
+        usersSession.beginTransaction();
 
-        Criteria c = usersSession.createCriteria ( UsersEntity.class );
-        ArrayList <UsersEntity> usersArrayList = (ArrayList <UsersEntity>) c.list ();
-        return new ModelAndView ( "favorites", "cList", usersArrayList );
+        Criteria c = usersSession.createCriteria(UsersEntity.class);
+        ArrayList<UsersEntity> usersArrayList = (ArrayList<UsersEntity>) c.list();
+        return new ModelAndView("favorites", "cList", usersArrayList);
     }
 
     @RequestMapping("login")
@@ -74,35 +74,26 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
-    public String loginCheck(Model model, @RequestParam("username") String userName,
+    public ModelAndView loginCheck(Model model, @RequestParam("email") String email,
                              @RequestParam("password") String password) {
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session usersSession = sessionFact.openSession();
+        usersSession.beginTransaction();
+        Criteria c = usersSession.createCriteria(UsersEntity.class);
+        c.add(Restrictions.eq("email", email));
+        UsersEntity user = (UsersEntity) c.uniqueResult();
+        System.out.println(user);
+        String password1 = user.getPassword();
 
-        model.addAttribute ( "userName1", userName );
-        model.addAttribute ( "password1", password );
+        if (password1.equals(password) ){
+            return new ModelAndView("userWelcome", "cList", user);
+        } else return new ModelAndView("loginFail", "cList", user);
 
-       // pull from hibernate -  user table
-        Configuration cfg = new Configuration ().configure ( "hibernate.cfg.xml" );
-        SessionFactory sessionFact = cfg.buildSessionFactory ();
-        Session usersSession = sessionFact.openSession ();
-
-        usersSession.beginTransaction ();
-        Criteria c = usersSession.createCriteria ( UsersEntity.class );
-        ArrayList <UsersEntity> usersArrayList = (ArrayList <UsersEntity>) c.list ();
-
-//        int pos = usersArrayList.indexOf ( userName );
-
-        //String pwd = usersArrayList.get ( pos ).getPassword ();
-
-        model.addAttribute ( "usersArrayList", usersArrayList);
-        //model.addAttribute ( "pwd", pwd);
-
-
-        if (password.equalsIgnoreCase ( "pwd")) {
-            return "loginSuccess";
-        } else {
-            return "loginFail";
         }
-    }
+
+
+
 
     @RequestMapping("/newUser")
     public String newUser() {
