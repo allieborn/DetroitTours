@@ -80,8 +80,8 @@
                                            placeholder="Pick Up"
                                            onFocus="geolocate()" type="text"
                                            size="45"/>
-                                    <br>
-                                    <button class="btn" onclick="historyCheck()">history</button>
+                                    <%--<br>--%>
+                                    <%--<button class="btn" onclick="historyCheck()">history</button>--%>
                                 </div>
 
                                 <input type="hidden" class="field" id="street_number" name="streetNum" disabled="true"/>
@@ -98,8 +98,8 @@
                                 <div id="locationField2">
                                     <input id="autocomplete1" class="form-control" placeholder="Where To?"
                                            onFocus="geolocate()" type="text" size="45"/>
-                                    <br>
-                                    <button class="btn" onclick="historyCheck()">history</button>
+                                    <%--<br>--%>
+                                    <%--<button class="btn" onclick="historyCheck()">history</button>--%>
                                 </div>
 
                                 <input type="hidden" class="field" id="street_number1" name="strtN" disabled="true"/>
