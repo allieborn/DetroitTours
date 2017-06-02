@@ -74,18 +74,15 @@
 
                         <form name="form" method="post" action="/ridecompare" onsubmit="return validateForm()">
                             <div class="form-group">
-                                <h3 class="">Please Enter Current Location</h3><br>
-
 
                                 <div id="locationField1">
                                     <input id="autocomplete" class="form-control" name="pickup"
-                                           placeholder="Pick Up Address"
+                                           placeholder="Pick Up"
                                            onFocus="geolocate()" type="text"
                                            size="45"/>
                                     <br>
                                     <button class="btn" onclick="historyCheck()">history</button>
                                 </div>
-
 
                                 <input type="hidden" class="field" id="street_number" name="streetNum" disabled="true"/>
                                 <input type="hidden" class="field" id="route" name="routee" disabled="true"/>
@@ -94,18 +91,16 @@
                                        disabled="true"/>
                                 <input type="hidden" class="field" id="postal_code" name="postal" disabled="true"/>
                                 <input type="hidden" class="field" name="count" id="country" disabled="true"/>
+
                             </div>
                             <div class="form-group">
-                                <h3 class="">Please Enter Destination</h3><br>
-
 
                                 <div id="locationField2">
-                                    <input id="autocomplete1" class="form-control" placeholder="Drop Off Address"
+                                    <input id="autocomplete1" class="form-control" placeholder="Where To?"
                                            onFocus="geolocate()" type="text" size="45"/>
                                     <br>
                                     <button class="btn" onclick="historyCheck()">history</button>
                                 </div>
-
 
                                 <input type="hidden" class="field" id="street_number1" name="strtN" disabled="true"/>
                                 <input type="hidden" class="field" id="route1" name="rou" disabled="true"/>
@@ -114,11 +109,11 @@
                                        disabled="true"/></td>
                                 <input type="hidden" class="field" id="postal_code1" name="posta" disabled="true"/>
                                 <input type="hidden" class="field" name="userCountry" id="country1" disabled="true"/>
+
                             </div>
 
-
                             <div class="form-group">
-                                <h4>Number of Riders</h4>
+                                <h4>Rider Capacity</h4>
                                 <label class="radio">
                                     <input type="radio" name="capSeat" data-toggle="radio" value="1">
                                     <i></i>4 Riders
@@ -132,10 +127,9 @@
                                     <i></i>All Types
                                 </label>
 
-
-                                <button class="btn" type="submit">Find A Ride</button>
                             </div>
 
+                            <button class="btn" type="submit">Find A Ride</button>
 
                         </form>
                     </div>

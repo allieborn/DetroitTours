@@ -63,7 +63,7 @@
 
 <div class="wrapper">
     <div class="container">
-        <h3>Welcome Back!<br>Login Page</h3>
+        <h3>Login</h3>
         <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
         <br>
 
@@ -78,11 +78,9 @@
                     </div>
                     <br>
                     <button class="btn" type="submit"/>Log In</button>
-                    <br>
+                    <br><br>
                     <a class="sign-out" href="#" onclick="signOut();">Sign out</a>
 
-                    <%--Not Enough Time - Stretch Goal--%>
-                    <%--<p class="forgot"><a href="#">Forgot Password?</a></p>--%>
                 </form>
             </div>
         </div>

@@ -52,7 +52,7 @@
 </nav>
 <div class="wrapper">
     <div class="container">
-        <h3>New Customer Registration</h3>
+        <h3>Register</h3>
 
         <form method="POST" action="/successfullyRegistered" <%--onsubmit="return validateForm()"--%>>
 

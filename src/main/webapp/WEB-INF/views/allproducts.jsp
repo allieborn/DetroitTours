@@ -60,21 +60,16 @@
     </div><!-- /.container-->
 </nav>
 <div class="wrapper">
-    <div class="container">
-        <div class="main-trip-summary">
-            <div class="section">
-                <div class="container">
-                    <div class="card-component">
-                        <h4>Your Trip</h4>
-                    </div>
-                    <br>
-                    <div class="card-block">
-                        <p><h6>Pick Up: </h6> ${fromAdd} </p>
-                        <p><h6>Drop Off: </h6> ${toAdd} </p>
-                    </div>
-                </div>
+    <div class="demo-header main-trip-summary">
+        <div class="motto">
+            <h1 class="title-uppercase">Your Trip</h1>
+            <div class="card-block">
+                <p><h6>Pick Up: </h6> ${fromAdd} </p>
+                <p><h6>Drop Off: </h6> ${toAdd} </p>
             </div>
         </div>
+    </div>
+    <div class="container">
         <div class="container-ride">
             <div class="row">
                 <c:forEach items="${uberProd}" varStatus="loop">
@@ -120,8 +115,9 @@
         </div>
     </div>
 </div>
-Map Route below
-<div id="map"></div>
+
+<%--Map Route below--%>
+<%--<div id="map"></div>--%>
 
 
 <script src="/resources/js/jquery-1.10.2.js" type="text/javascript"></script>

@@ -59,58 +59,56 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-->
 </nav>
+
 <div class="wrapper">
-    <div class="container">
-        <div class="main-trip-summary">
-            <div class="section">
-                <div class="container">
-                    <div class="card-component">
-                        <h4>Your Trip</h4>
-                    </div>
-                    <br>
-                    <div class="card-block">
-                        <p><h6>Pick Up: </h6> ${fromAdd} </p>
-                        <p><h6>Drop Off: </h6> ${toAdd} </p>
-                    </div>
+        <div class="demo-header main-trip-summary">
+            <div class="motto">
+                <h1 class="title-uppercase">Your Trip</h1>
+                <div class="card-block">
+                    <p><h6>Pick Up: </h6> ${fromAdd} </p>
+                    <p><h6>Drop Off: </h6> ${toAdd} </p>
                 </div>
             </div>
         </div>
-        <div class="container-ride">
-            <div class="row">
-                <c:forEach items="${product}" varStatus="loop">
+
+        <div class="container">
+            <div class="container-ride">
+                <div class="row">
+                    <c:forEach items="${product}" varStatus="loop">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-block">
+                                    <h3 class="card-title">UBER</h3>
+                                    <p class="card-text"> ${product[loop.index].toString()} <br> No. of Riders: ${capacity}
+                                    </p>
+                                    <h5 class="card-title" name="price">${price[loop.index].toString()}</h5>
+                                    <h5 class="card-title" name="time">Driver is ${time[loop.index].toString()} minutes
+                                        away</h5>
+                                    <a href="https://m.uber.com/ul/?action=setPickup" action="finishSelection"
+                                       class="btn btn-primary" target="_blank">Call Uber</a>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
                     <div class="col-sm-6">
                         <div class="card">
                             <div class="card-block">
-                                <h3 class="card-title">UBER</h3>
-                                <p class="card-text"> ${product[loop.index].toString()} <br> No. of Riders: ${capacity}
-                                </p>
-                                <h5 class="card-title" name="price">${price[loop.index].toString()}</h5>
-                                <h5 class="card-title" name="time">Driver is ${time[loop.index].toString()} minutes
-                                    away</h5>
-                                <a href="https://m.uber.com/ul/?action=setPickup" action="finishSelection"
-                                   class="btn btn-primary" target="_blank">Call Uber</a>
+                                <h3 class="card-title">LYFT</h3>
+                                <p class="card-text">${typeOfLyft} <br> No. of Riders: ${capacity} </p>
+                                <h5 class="card-title">${displayPriceMin}-${displayPriceMax}</h5>
+                                <h5 class="card-title">Driver is ${driverETA} minutes away</h5>
+                                <a href="https://lyft.com/i" class="btn btn-primary" target="_blank">Call Lyft</a>
                             </div>
-                        </div>
-                    </div>
-                </c:forEach>
-                <div class="col-sm-6">
-                    <div class="card">
-                        <div class="card-block">
-                            <h3 class="card-title">LYFT</h3>
-                            <p class="card-text">${typeOfLyft} <br> No. of Riders: ${capacity} </p>
-                            <h5 class="card-title">${displayPriceMin}-${displayPriceMax}</h5>
-                            <h5 class="card-title">Driver is ${driverETA} minutes away</h5>
-                            <a href="https://lyft.com/i" class="btn btn-primary" target="_blank">Call Lyft</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
 </div>
-Map Route below
-<div id="map">
-</div>
+<%--Map Route below--%>
+<%--<div id="map">--%>
+<%--</div>--%>
 
 <script src="/resources/js/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="/resources/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>

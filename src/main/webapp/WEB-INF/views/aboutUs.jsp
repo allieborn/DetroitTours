@@ -23,95 +23,118 @@
     <style>
         div.show-image {
             position: relative;
-            float:left;
-            margin:5px;
+            float: left;
+            margin: 5px;
         }
+
         div.show-image1 {
             position: relative;
-            float:left;
-            margin:5px;
+            float: left;
+            margin: 5px;
         }
+
         div.show-image2 {
             position: relative;
-            float:left;
-            margin:5px;
+            float: left;
+            margin: 5px;
         }
+
         div.show-image3 {
             position: relative;
-            float:left;
-            margin:5px;
+            float: left;
+            margin: 5px;
         }
-        div.show-image:hover img{
-            opacity:0.5;
+
+        div.show-image:hover img {
+            opacity: 0.5;
         }
-        div.show-image1:hover img{
-            opacity:0.5;
+
+        div.show-image1:hover img {
+            opacity: 0.5;
         }
-        div.show-image2:hover img{
-            opacity:0.5;
+
+        div.show-image2:hover img {
+            opacity: 0.5;
         }
-        div.show-image3:hover img{
-            opacity:0.5;
+
+        div.show-image3:hover img {
+            opacity: 0.5;
         }
+
         div.show-image:hover input {
             display: block;
         }
+
         div.show-image1:hover input {
             display: block;
         }
+
         div.show-image2:hover input {
             display: block;
         }
+
         div.show-image3:hover input {
             display: block;
         }
+
         div.show-image input {
-            position:absolute;
-            display:none;
+            position: absolute;
+            display: none;
         }
+
         div.show-image1 input {
-            position:absolute;
-            display:none;
+            position: absolute;
+            display: none;
         }
+
         div.show-image2 input {
-            position:absolute;
-            display:none;
+            position: absolute;
+            display: none;
         }
+
         div.show-image3 input {
-            position:absolute;
-            display:none;
+            position: absolute;
+            display: none;
         }
+
         div.show-image input.linkedin {
-            top:0;
-            left:0;
+            top: 0;
+            left: 0;
         }
+
         div.show-image1 input.linkedin {
-            top:0;
-            left:0;
+            top: 0;
+            left: 0;
         }
+
         div.show-image2 input.linkedin {
-            top:0;
-            left:0;
+            top: 0;
+            left: 0;
         }
+
         div.show-image3 input.linkedin {
-            top:0;
-            left:0;
+            top: 0;
+            left: 0;
         }
+
         div.show-image input.github {
-            top:0;
-            left:79%;
+            top: 0;
+            left: 79%;
         }
+
         div.show-image1 input.github {
-            top:0;
-            left:79%;
+            top: 0;
+            left: 79%;
         }
+
         div.show-image2 input.github {
-            top:0;
-            left:79%;
+            top: 0;
+            left: 79%;
         }
+
         div.show-image3 input.github {
-            top:0;
-            left:79%;
+            top: 0;
+            left: 79%;
         }
     </style>
 </head>
@@ -151,30 +174,57 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-->
 </nav>
-<div align="center">
-    <h1>Meet The Creators</h1> <br>
+<div class="wrapper">
+    <div class="container">
+        <div align="center">
+            <h1>Meet The Creators</h1> <br>
+        </div>
+
+        <div class="col-sm-6">
+            <h6>Stephanie Broadwell</h6>
+            <div class="show-image">
+                <img src="https://www.grandcircus.co/wp-content/uploads/2017/05/Stephanie-Broadwell.jpg"/>
+                <input class="linkedin" type="button" value="LinkedIn"
+                       onclick="location.href='https://www.linkedin.com/in/stephanie-broadwell-15a14b6b/';"/>
+                <input class="github" type="button" value="GitHub"
+                       onclick="location.href='https://github.com/broadwells';"/>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <h6>Allie Born</h6>
+            <div class="show-image1">
+                <img src="https://www.grandcircus.co/wp-content/uploads/2017/05/Allie-Born.jpg"/>
+                <input class="linkedin" type="button" value="LinkedIn"
+                       onclick="location.href='https://www.linkedin.com/in/alexandra-born/';"/>
+                <input class="github" type="button" value="GitHub"
+                       onclick="location.href='https://github.com/allieborn/';"/>
+            </div>
+        </div>
+        <br>
+        <div class="col-sm-6">
+            <h6>Peter Setiawan</h6>
+            <div class="show-image2">
+                <img src="https://www.grandcircus.co/wp-content/uploads/2017/05/Peter-Setiawan.jpg"/>
+                <input class="linkedin" type="button" value="LinkedIn"
+                       onclick="location.href='https://www.linkedin.com/in/psetiawan/';"/>
+                <input class="github" type="button" value="GitHub"
+                       onclick="location.href='https://github.com/peterpreneur';"/>
+            </div>
+        </div>
+        <br>
+        <div class="col-sm-6">
+            <h6>Nick Katsarelas</h6>
+            <div class="show-image3">
+                <img src="https://www.grandcircus.co/wp-content/uploads/2017/05/Nick-Katsarelas.jpg"/>
+                <input class="linkedin" type="button" value="LinkedIn"
+                       onclick="location.href='https://www.linkedin.com/in/nick-katsarelas-11790a134/';"/>
+                <input class="github" type="button" value="GitHub"
+                       onclick="location.href='https://github.com/nickkatz22';"/>
+            </div>
+        </div>
+    </div>
 </div>
-
-<div class="show-image">
-    <img src="https://www.grandcircus.co/wp-content/uploads/2017/05/Stephanie-Broadwell.jpg" />
-    <input class="linkedin" type ="button"  value="LinkedIn" onclick="location.href='https://www.linkedin.com/in/stephanie-broadwell-15a14b6b/';"/>
-    <input class="github" type ="button"  value="GitHub" onclick="location.href='https://github.com/broadwells';"/></div>
-
-<div class="show-image1">
-    <img src="https://www.grandcircus.co/wp-content/uploads/2017/05/Allie-Born.jpg"/>
-    <input class="linkedin" type ="button"  value="LinkedIn" onclick="location.href='https://www.linkedin.com/in/alexandra-born/';"/>
-    <input class="github" type ="button"  value="GitHub" onclick="location.href='https://github.com/allieborn/';"/></div>
-
-<div class="show-image2">
-    <img src="https://www.grandcircus.co/wp-content/uploads/2017/05/Peter-Setiawan.jpg"/>
-    <input class="linkedin" type ="button"  value="LinkedIn" onclick="location.href='https://www.linkedin.com/in/psetiawan/';"/>
-    <input class="github" type ="button"  value="GitHub" onclick="location.href='https://github.com/peterpreneur';"/></div>
-
-<div class="show-image3">
-    <img src="https://www.grandcircus.co/wp-content/uploads/2017/05/Nick-Katsarelas.jpg"/>
-    <input class="linkedin" type ="button"  value="LinkedIn" onclick="location.href='https://www.linkedin.com/in/nick-katsarelas-11790a134/';"/>
-    <input class="github" type ="button"  value="GitHub" onclick="location.href='https://github.com/nickkatz22';"/></div>
-
 
 
 <script src="/resources/js/jquery-1.10.2.js" type="text/javascript"></script>
